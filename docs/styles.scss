@@ -1,0 +1,263 @@
+/*-- scss:defaults --*/
+
+// Palette lifted from app.R's bs_theme() so the page and the app read as one thing.
+$ink:        #1c1917;
+$paper:      #f6f4ef;
+$deep:       #1b3a4b;
+$deep-soft:  #234a60;
+$clay:       #8a5a32;
+$rule:       #ddd4c6;
+$card:       #efeae1;
+$muted:      #57534e;
+
+$body-bg:    $paper;
+$body-color: $ink;
+$link-color: $deep;
+
+$font-family-sans-serif: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-monospace:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+$headings-font-family:   "Source Serif 4", Georgia, serif;
+
+$font-size-root: 17px;
+
+$code-block-bg:    $deep;
+$code-block-color: #f4efe6;
+$code-color:       $clay;
+
+/*-- scss:rules --*/
+
+body {
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: $deep;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  margin-top: 2.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid $rule;
+}
+
+h3 {
+  margin-top: 1.9rem;
+  font-size: 1.15rem;
+}
+
+#title-block-header {
+  border-bottom: none;
+}
+
+// --- Hero -------------------------------------------------------------
+
+.hero {
+  background: linear-gradient(135deg, $deep, $deep-soft);
+  color: $paper;
+  border-radius: 14px;
+  padding: 2.1rem 2.2rem 1.8rem;
+  margin: 0 0 2.2rem;
+  box-shadow: 0 4px 18px rgba(27, 58, 75, 0.18);
+
+  p { color: rgba(246, 244, 239, 0.92); margin-bottom: 0.6rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: #fff; }
+  code { color: #f0d9c2; background: rgba(246, 244, 239, 0.1);
+         padding: 0.1em 0.35em; border-radius: 4px; }
+  a { color: #f0d9c2; }
+}
+
+.hero-lede {
+  font-family: $headings-font-family;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  margin-bottom: 1rem !important;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.2rem;
+}
+
+.hero-meta span {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(246, 244, 239, 0.32);
+  background: rgba(246, 244, 239, 0.1);
+  color: $paper;
+}
+
+// --- Step cards -------------------------------------------------------
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+  margin: 1.6rem 0 0.6rem;
+}
+
+.step {
+  background: $card;
+  border: 1px solid $rule;
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+
+  .step-n {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: $clay;
+    margin-bottom: 0.35rem;
+  }
+  .step-t {
+    display: block;
+    font-family: $headings-font-family;
+    font-size: 1.02rem;
+    color: $deep;
+    margin-bottom: 0.3rem;
+  }
+  .step-d {
+    display: block;
+    font-size: 0.87rem;
+    line-height: 1.45;
+    color: $muted;
+  }
+}
+
+// --- Prompt chips -----------------------------------------------------
+
+.prompts {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.9rem 0 0;
+
+  li {
+    position: relative;
+    background: #fff;
+    border: 1px solid $rule;
+    border-left: 3px solid $clay;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem 0.5rem 2.3rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.93rem;
+  }
+
+  li::before {
+    content: "\201C";
+    position: absolute;
+    left: 0.75rem;
+    top: 0.42rem;
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: $clay;
+    opacity: 0.6;
+  }
+}
+
+// --- Figures ----------------------------------------------------------
+
+figure.shot {
+  margin: 1.6rem 0;
+
+  img {
+    width: 100%;
+    border: 1px solid $rule;
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(28, 25, 23, 0.1);
+    background: #fff;
+  }
+
+  figcaption {
+    font-size: 0.85rem;
+    color: $muted;
+    margin-top: 0.6rem;
+    line-height: 1.45;
+  }
+}
+
+// Three renderings of one recipe, shown together.
+.panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.1rem;
+  align-items: start;
+  margin: 1.4rem 0;
+
+  figure.shot { margin: 0.5rem 0; }
+
+  // The chart spans both columns; the two code panes sit side by side under it.
+  > div:first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .panes { grid-template-columns: 1fr; }
+  .panes > div:first-child { grid-column: auto; }
+}
+
+.shot-slot {
+  border: 2px dashed $rule;
+  border-radius: 10px;
+  padding: 2.2rem 1.2rem;
+  text-align: center;
+  color: $muted;
+  background: rgba(239, 234, 225, 0.5);
+  margin: 1.6rem 0;
+
+  .slot-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $clay;
+    margin-bottom: 0.45rem;
+  }
+  .slot-file {
+    font-family: $font-family-monospace;
+    font-size: 0.82rem;
+    color: $deep;
+  }
+  .slot-note {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+  }
+}
+
+// --- Tables -----------------------------------------------------------
+
+table {
+  font-size: 0.9rem;
+}
+
+thead th {
+  border-bottom: 2px solid $deep !important;
+  color: $deep;
+  font-weight: 700;
+}
+
+// --- Callout tweak ----------------------------------------------------
+
+div.callout {
+  border-radius: 10px;
+}
+
+// --- Footer -----------------------------------------------------------
+
+.page-footer {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid $rule;
+  font-size: 0.85rem;
+  color: $muted;
+}
