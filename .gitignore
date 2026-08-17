@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+rsconnect/
+*.Rproj
+screenshot.png

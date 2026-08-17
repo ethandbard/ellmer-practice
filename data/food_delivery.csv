@@ -1,0 +1,421 @@
+"order_id","order_date","region","city","cuisine","restaurant","daypart","platform","membership","weather","promo","items","distance_km","delivery_min","subtotal","tip","total","rating"
+"FD-0001","2024-06-02","Midwest","Chicago","Sushi","Pacific Roll","Lunch","iOS","Plus","Rain","No",4,2.23,33.5,26.42,5.16,31.58,4
+"FD-0002","2024-06-03","East","Boston","Thai","Lemongrass Cart","Late Night","Android","Pro","Rain","No",4,1.69,25.1,30.82,8.75,39.57,4.5
+"FD-0003","2024-06-03","West","Seattle","Mexican","Taco Libre","Lunch","Android","Free","Snow","No",2,5.8,46.7,16.3,2.53,18.83,3
+"FD-0004","2024-06-04","South","Miami","Thai","Night Market Bowl","Dinner","Android","Plus","Rain","No",6,3.77,51.5,22.7,4.2,26.9,3.5
+"FD-0005","2024-06-04","South","Miami","Indian","Tandoor Lane","Dinner","Web","Plus","Clear","Yes",3,3.72,31.1,16.93,4.15,21.08,4.5
+"FD-0006","2024-06-05","South","Nashville","Thai","Night Market Bowl","Lunch","iOS","Free","Cloudy","Yes",4,2.83,30.2,21.67,4.15,25.82,3.5
+"FD-0007","2024-06-06","East","Boston","Ramen","Tonkotsu Lab","Afternoon","Web","Pro","Cloudy","No",2,3.22,25.2,16.37,3.81,20.18,4
+"FD-0008","2024-06-06","East","Boston","Burgers","Smash District","Dinner","iOS","Free","Cloudy","No",2,1.94,35.1,17.75,2.92,20.67,3.5
+"FD-0009","2024-06-07","West","Seattle","Pizza","Wood Oven Co","Afternoon","iOS","Free","Rain","No",2,2.42,28.2,14.28,2.38,16.66,4
+"FD-0010","2024-06-11","South","Nashville","Indian","Masala Hour","Late Night","Web","Pro","Snow","No",3,6.33,52.2,14.98,3.38,18.36,4
+"FD-0011","2024-06-11","West","Seattle","Mediterranean","Citrus Grill","Afternoon","iOS","Plus","Cloudy","Yes",2,1.5,20.1,10.86,1.97,12.83,4
+"FD-0012","2024-06-13","West","Seattle","Mediterranean","Olive & Fig","Lunch","Android","Free","Cloudy","No",2,3.36,24.8,18.17,2.61,20.78,4
+"FD-0013","2024-06-15","Midwest","Chicago","Mexican","Masa & Lime","Dinner","iOS","Free","Clear","No",2,7.41,52.6,19.07,2.14,21.21,3.5
+"FD-0014","2024-06-15","West","Seattle","Ramen","Broth & Bone","Lunch","iOS","Free","Rain","Yes",2,5.52,42.5,12.15,3.48,15.63,3.5
+"FD-0015","2024-06-15","West","Seattle","Burgers","Gold Bun","Afternoon","Android","Free","Rain","No",3,3.05,27.7,14.33,1.63,15.96,4.5
+"FD-0016","2024-06-17","South","Austin","Mexican","Taco Libre","Afternoon","Android","Free","Cloudy","No",2,3.44,25.7,12.29,0.75,13.04,4.5
+"FD-0017","2024-06-18","West","Seattle","Mediterranean","Olive & Fig","Dinner","Android","Plus","Clear","No",2,3.56,29.4,21,2.66,23.66,4
+"FD-0018","2024-06-21","West","Portland","Ramen","Midnight Noodle","Lunch","iOS","Free","Cloudy","Yes",2,3.55,31.2,10.37,1.28,11.65,3.5
+"FD-0019","2024-06-21","West","Denver","Sushi","Nori Desk","Dinner","iOS","Free","Cloudy","No",3,2.63,33.2,28.09,2.73,30.82,4
+"FD-0020","2024-06-25","West","Portland","Thai","Lemongrass Cart","Lunch","Android","Pro","Cloudy","No",3,2.49,24.1,25.03,6.24,31.27,4
+"FD-0021","2024-06-25","Midwest","Chicago","Ramen","Broth & Bone","Lunch","iOS","Free","Rain","No",2,3.09,35.3,10.7,2.04,12.74,4
+"FD-0022","2024-06-26","East","Boston","Thai","Lemongrass Cart","Late Night","iOS","Free","Clear","No",4,3.04,16.9,24.04,3.58,27.62,4
+"FD-0023","2024-06-26","West","Denver","Mediterranean","Citrus Grill","Lunch","iOS","Free","Snow","No",5,8.48,55.3,16.41,2.88,19.29,3.5
+"FD-0024","2024-06-28","East","Boston","Mexican","Masa & Lime","Afternoon","iOS","Free","Clear","No",3,5.74,36.6,11.55,1.55,13.1,3.5
+"FD-0025","2024-06-28","West","Portland","Pizza","Slice Theory","Late Night","Android","Free","Clear","No",2,2.76,21.8,20.41,2.92,23.33,4.5
+"FD-0026","2024-06-29","East","Boston","Ramen","Broth & Bone","Afternoon","Android","Free","Cloudy","No",1,3.64,31.3,11.74,0.46,12.2,3.5
+"FD-0027","2024-06-29","West","Denver","Thai","Night Market Bowl","Lunch","iOS","Free","Clear","No",2,4.26,35.5,15.14,1.2,16.34,4
+"FD-0028","2024-07-01","Midwest","Chicago","Indian","Masala Hour","Lunch","iOS","Pro","Cloudy","No",3,2.38,24.1,19.54,3.17,22.71,4.5
+"FD-0029","2024-07-01","South","Austin","Indian","Cardamom Cart","Late Night","Web","Pro","Rain","No",2,4.98,31.1,22.03,2.5,24.53,3.5
+"FD-0030","2024-07-01","South","Austin","Pizza","Wood Oven Co","Dinner","iOS","Free","Clear","No",3,4.7,29.7,20.38,2.81,23.19,4
+"FD-0031","2024-07-03","South","Austin","Thai","Lemongrass Cart","Late Night","iOS","Pro","Rain","No",2,1.38,27,18.79,5,23.79,4.5
+"FD-0032","2024-07-03","West","Portland","Mediterranean","Pita Press","Lunch","Android","Free","Rain","No",2,2.63,31,16.91,2.77,19.68,3.5
+"FD-0033","2024-07-04","South","Austin","Mexican","Taco Libre","Lunch","Web","Free","Rain","No",1,4.34,35.3,11.59,1.33,12.92,4
+"FD-0034","2024-07-05","South","Nashville","Mexican","Taco Libre","Dinner","Android","Plus","Cloudy","Yes",4,4.25,37.3,21.58,4.89,26.47,4
+"FD-0035","2024-07-06","East","Boston","Indian","Tandoor Lane","Dinner","Android","Free","Cloudy","No",2,1.7,28.2,19.43,2.28,21.71,4
+"FD-0036","2024-07-06","East","Boston","Thai","Night Market Bowl","Late Night","iOS","Plus","Clear","Yes",2,3.01,16.3,14,2.91,16.91,4
+"FD-0037","2024-07-08","South","Austin","Sushi","Omakase Express","Lunch","Android","Free","Rain","No",4,4.4,38.1,20.44,3.03,23.47,3.5
+"FD-0038","2024-07-08","South","Nashville","Indian","Cardamom Cart","Dinner","Android","Free","Clear","No",2,3.33,34.4,14.56,0.74,15.3,3.5
+"FD-0039","2024-07-09","West","Portland","Burgers","Smash District","Lunch","Android","Plus","Clear","No",2,3.07,37.7,17.28,2.98,20.26,3.5
+"FD-0040","2024-07-11","East","Boston","Mexican","Chile Verde","Late Night","Android","Free","Cloudy","No",2,8.2,49,15.73,1.94,17.67,3.5
+"FD-0041","2024-07-12","West","Portland","Mexican","Masa & Lime","Dinner","Android","Free","Cloudy","No",2,5.69,46.7,11.71,1.67,13.38,4
+"FD-0042","2024-07-13","South","Austin","Thai","Night Market Bowl","Dinner","Android","Plus","Rain","No",8,2.65,39.4,18.97,4.3,23.27,4
+"FD-0043","2024-07-13","Midwest","Chicago","Ramen","Midnight Noodle","Late Night","Web","Plus","Cloudy","No",4,4.87,32.1,26.64,4.06,30.7,4.5
+"FD-0044","2024-07-14","West","Denver","Sushi","Omakase Express","Dinner","Web","Free","Cloudy","No",5,3.14,29.5,30.93,0,30.93,4
+"FD-0045","2024-07-14","East","Boston","Mexican","Chile Verde","Afternoon","Android","Plus","Cloudy","No",4,5.39,28.2,10.37,2,12.37,4.5
+"FD-0046","2024-07-17","South","Austin","Mediterranean","Citrus Grill","Lunch","iOS","Pro","Clear","No",2,6.03,34.7,12.29,2.92,15.21,3.5
+"FD-0047","2024-07-17","East","Boston","Mexican","Chile Verde","Afternoon","iOS","Plus","Clear","No",1,4.23,25.9,9.44,1.71,11.15,4
+"FD-0048","2024-07-18","South","Miami","Mexican","Taco Libre","Lunch","Web","Free","Rain","No",1,6.93,53.2,12.52,1.91,14.43,3
+"FD-0049","2024-07-18","Midwest","Chicago","Pizza","Late Night Pie","Dinner","iOS","Free","Rain","No",4,2.26,35,23.16,2.79,25.95,4
+"FD-0050","2024-07-20","Midwest","Chicago","Mediterranean","Olive & Fig","Lunch","iOS","Free","Clear","Yes",5,4.15,34.9,13.81,2.17,15.98,3.5
+"FD-0051","2024-07-20","South","Austin","Sushi","Omakase Express","Afternoon","Android","Plus","Clear","No",2,5.41,32.3,19.23,3.84,23.07,4
+"FD-0052","2024-07-20","West","Seattle","Mexican","Taco Libre","Lunch","iOS","Free","Cloudy","No",2,2.06,23.6,10.55,1.37,11.92,4
+"FD-0053","2024-07-20","Midwest","Chicago","Sushi","Pacific Roll","Late Night","iOS","Free","Rain","No",3,3.22,28.7,22.34,3.34,25.68,4
+"FD-0054","2024-07-22","West","Seattle","Mexican","Chile Verde","Dinner","Web","Free","Rain","Yes",4,2.88,37.5,12.48,0.9,13.38,3.5
+"FD-0055","2024-07-25","East","Boston","Pizza","Slice Theory","Dinner","Android","Plus","Cloudy","No",2,1.59,25.8,22.45,4.59,27.04,4
+"FD-0056","2024-07-25","West","Portland","Sushi","Pacific Roll","Lunch","Android","Free","Rain","No",4,1.45,28.8,25.62,4.03,29.65,4.5
+"FD-0057","2024-07-25","South","Austin","Pizza","Late Night Pie","Dinner","iOS","Free","Clear","No",5,3.39,28.7,21.26,2.42,23.68,4
+"FD-0058","2024-07-26","Midwest","Chicago","Burgers","Gold Bun","Afternoon","Android","Free","Clear","No",5,3.47,22.7,15.03,1.81,16.84,4
+"FD-0059","2024-07-26","South","Austin","Mexican","Taco Libre","Lunch","iOS","Free","Clear","No",3,5.13,41,9.72,0.98,10.7,4
+"FD-0060","2024-07-28","South","Nashville","Mediterranean","Citrus Grill","Lunch","Android","Free","Clear","No",3,2.19,25.9,18.12,1.35,19.47,5
+"FD-0061","2024-07-31","Midwest","Chicago","Pizza","Slice Theory","Dinner","iOS","Plus","Rain","No",4,1.43,33.8,24.26,3.13,27.39,4.5
+"FD-0062","2024-08-01","Midwest","Chicago","Ramen","Broth & Bone","Afternoon","iOS","Free","Clear","Yes",2,2.84,21.6,10.53,2,12.53,4.5
+"FD-0063","2024-08-01","West","Seattle","Burgers","Patty Wagon","Afternoon","iOS","Pro","Clear","No",3,2.8,22.3,17.86,2.97,20.83,4.5
+"FD-0064","2024-08-01","West","Portland","Indian","Masala Hour","Lunch","Android","Free","Rain","No",3,2.17,25,15.93,2.19,18.12,4
+"FD-0065","2024-08-02","East","Boston","Burgers","Patty Wagon","Dinner","Android","Free","Clear","Yes",2,1.4,26.6,15.41,3.6,19.01,4.5
+"FD-0066","2024-08-03","South","Austin","Mediterranean","Olive & Fig","Lunch","iOS","Pro","Cloudy","No",2,6.59,42.9,13.78,2.78,16.56,4
+"FD-0067","2024-08-06","West","Seattle","Mexican","Chile Verde","Lunch","Web","Plus","Cloudy","No",2,4.4,32.7,16.37,3.43,19.8,4
+"FD-0068","2024-08-12","South","Austin","Mexican","Masa & Lime","Lunch","iOS","Free","Clear","No",3,2.47,18.3,16.04,0.91,16.95,3.5
+"FD-0069","2024-08-13","South","Nashville","Indian","Cardamom Cart","Dinner","Android","Plus","Rain","No",3,5.62,45.5,18.23,3.36,21.59,3.5
+"FD-0070","2024-08-14","South","Austin","Thai","Bangkok Alley","Dinner","iOS","Pro","Snow","Yes",3,3.11,43.1,13.34,3.33,16.67,3
+"FD-0071","2024-08-14","West","Portland","Burgers","Gold Bun","Lunch","Android","Free","Snow","No",2,6.16,43,14.77,1.86,16.63,3.5
+"FD-0072","2024-08-15","East","Boston","Mediterranean","Pita Press","Late Night","iOS","Free","Clear","No",3,1.32,15.3,17.55,1.11,18.66,4.5
+"FD-0073","2024-08-16","South","Austin","Mexican","Taco Libre","Lunch","Android","Free","Clear","No",1,3.78,26.2,12.56,1.6,14.16,4.5
+"FD-0074","2024-08-18","South","Nashville","Mexican","Masa & Lime","Dinner","iOS","Free","Cloudy","No",2,2.36,28,17.9,2.64,20.54,4
+"FD-0075","2024-08-22","South","Miami","Ramen","Tonkotsu Lab","Late Night","Android","Plus","Cloudy","No",4,2.65,17.1,23.53,2.84,26.37,4.5
+"FD-0076","2024-08-22","West","Portland","Thai","Bangkok Alley","Lunch","Web","Pro","Clear","No",5,3.65,31.4,25.56,6.18,31.74,4.5
+"FD-0077","2024-08-22","South","Miami","Pizza","Slice Theory","Afternoon","Android","Free","Rain","Yes",4,2.65,23.3,13.25,2.15,15.4,4.5
+"FD-0078","2024-08-24","West","Portland","Mexican","Taco Libre","Afternoon","iOS","Plus","Cloudy","Yes",1,6.35,37,6.38,0.92,7.3,4
+"FD-0079","2024-08-25","West","Portland","Pizza","Slice Theory","Lunch","Android","Free","Cloudy","No",4,2.75,31.3,24.03,2.61,26.64,3.5
+"FD-0080","2024-08-26","South","Austin","Mediterranean","Olive & Fig","Dinner","iOS","Plus","Cloudy","Yes",5,2.23,24.8,24.23,4.65,28.88,4
+"FD-0081","2024-08-28","South","Miami","Ramen","Tonkotsu Lab","Dinner","iOS","Pro","Clear","No",2,7.61,41.5,17.04,3.43,20.47,4.5
+"FD-0082","2024-08-29","West","Portland","Burgers","Gold Bun","Dinner","iOS","Pro","Clear","No",7,7.98,49.2,23.05,4.7,27.75,4
+"FD-0083","2024-08-29","West","Portland","Mexican","Taco Libre","Lunch","Android","Plus","Clear","No",4,2.85,23.1,17.66,2.61,20.27,4
+"FD-0084","2024-08-29","West","Portland","Pizza","Slice Theory","Afternoon","iOS","Free","Clear","Yes",3,3.02,24,12.23,1.86,14.09,4
+"FD-0085","2024-08-31","West","Denver","Ramen","Broth & Bone","Dinner","Android","Plus","Snow","Yes",2,1.35,31.7,15.78,2.44,18.22,4.5
+"FD-0086","2024-09-02","West","Denver","Mexican","Taco Libre","Lunch","Android","Pro","Clear","Yes",2,5.75,41.1,14.33,3.94,18.27,3.5
+"FD-0087","2024-09-02","South","Austin","Indian","Cardamom Cart","Afternoon","Android","Free","Rain","No",3,4.82,40.9,13.95,2.91,16.86,4
+"FD-0088","2024-09-03","South","Miami","Indian","Tandoor Lane","Afternoon","iOS","Pro","Clear","No",4,5.04,36.5,14.03,1.59,15.62,3.5
+"FD-0089","2024-09-03","West","Seattle","Mexican","Chile Verde","Afternoon","Android","Plus","Clear","No",2,3.63,25.7,13.73,2.51,16.24,4
+"FD-0090","2024-09-04","Midwest","Chicago","Indian","Cardamom Cart","Dinner","iOS","Plus","Cloudy","No",2,3.58,35.3,22.11,4.21,26.32,3.5
+"FD-0091","2024-09-04","East","Boston","Mexican","Chile Verde","Dinner","iOS","Plus","Clear","No",2,3.18,35.6,16.18,2.66,18.84,4
+"FD-0092","2024-09-06","West","Portland","Burgers","Patty Wagon","Lunch","Web","Pro","Clear","No",3,5.96,33,14.8,2.49,17.29,4
+"FD-0093","2024-09-07","West","Seattle","Burgers","Smash District","Lunch","iOS","Free","Rain","Yes",4,2.86,34.9,13.82,3.22,17.04,3.5
+"FD-0094","2024-09-09","Midwest","Chicago","Pizza","Slice Theory","Dinner","iOS","Plus","Cloudy","Yes",3,8.75,48.4,17.41,4.2,21.61,3.5
+"FD-0095","2024-09-11","South","Austin","Mexican","Chile Verde","Dinner","Android","Plus","Clear","No",4,4.14,34.4,22.07,1.55,23.62,4
+"FD-0096","2024-09-12","West","Portland","Ramen","Midnight Noodle","Dinner","iOS","Free","Clear","Yes",4,6.87,37.5,13.09,0,13.09,3.5
+"FD-0097","2024-09-14","South","Miami","Mediterranean","Pita Press","Dinner","Web","Free","Clear","Yes",3,2.21,26.2,13.12,0.94,14.06,4
+"FD-0098","2024-09-16","East","Boston","Mexican","Masa & Lime","Dinner","Android","Pro","Clear","No",4,2.84,30.1,16.22,2.3,18.52,4
+"FD-0099","2024-09-17","East","Boston","Burgers","Smash District","Dinner","Android","Free","Clear","No",2,9.12,53.4,15.56,1.02,16.58,3
+"FD-0100","2024-09-17","South","Nashville","Thai","Bangkok Alley","Lunch","Android","Plus","Clear","No",6,8.97,52,16.44,2.52,18.96,2.5
+"FD-0101","2024-09-17","South","Nashville","Indian","Tandoor Lane","Dinner","iOS","Free","Rain","Yes",3,2.7,37,18.06,2.25,20.31,4
+"FD-0102","2024-09-18","Midwest","Chicago","Mediterranean","Olive & Fig","Late Night","iOS","Free","Clear","No",3,2.42,18.1,16.13,0.68,16.81,4
+"FD-0103","2024-09-18","Midwest","Chicago","Thai","Lemongrass Cart","Late Night","iOS","Free","Clear","Yes",4,5.4,28,20.66,3.22,23.88,4.5
+"FD-0104","2024-09-18","South","Austin","Ramen","Tonkotsu Lab","Late Night","Android","Pro","Clear","No",6,5.29,32.1,33.17,5.23,38.4,4.5
+"FD-0105","2024-09-19","South","Austin","Burgers","Gold Bun","Late Night","iOS","Plus","Clear","Yes",5,2.78,21.6,15.61,3.06,18.67,4
+"FD-0106","2024-09-19","South","Miami","Ramen","Midnight Noodle","Late Night","iOS","Plus","Clear","No",2,9.26,42.4,20.65,1.78,22.43,3.5
+"FD-0107","2024-09-20","West","Seattle","Indian","Cardamom Cart","Lunch","Android","Free","Clear","Yes",2,2.88,35.4,16.93,2.52,19.45,3.5
+"FD-0108","2024-09-20","Midwest","Chicago","Mexican","Masa & Lime","Late Night","Android","Free","Rain","No",6,3.81,37.2,19.62,2.19,21.81,4
+"FD-0109","2024-09-21","East","Boston","Ramen","Broth & Bone","Lunch","Web","Plus","Clear","No",1,3.56,27.2,11.02,2.19,13.21,4
+"FD-0110","2024-09-22","West","Seattle","Thai","Lemongrass Cart","Afternoon","Android","Pro","Cloudy","No",3,1.74,21.7,20.04,4.48,24.52,5
+"FD-0111","2024-09-22","South","Austin","Mexican","Chile Verde","Dinner","Web","Plus","Cloudy","No",3,4.88,40.5,26.88,4.6,31.48,3.5
+"FD-0112","2024-09-23","South","Austin","Pizza","Wood Oven Co","Dinner","Web","Plus","Clear","No",3,2.49,23.6,19.65,4.43,24.08,4
+"FD-0113","2024-09-23","West","Seattle","Pizza","Wood Oven Co","Dinner","Android","Free","Cloudy","No",5,1.15,21.8,22.83,2.52,25.35,4
+"FD-0114","2024-09-24","West","Denver","Mexican","Chile Verde","Afternoon","Android","Free","Clear","No",3,4.73,26.1,9.61,1.27,10.88,4.5
+"FD-0115","2024-09-24","South","Miami","Mexican","Taco Libre","Afternoon","iOS","Free","Cloudy","No",3,3.88,27.7,8.97,1.61,10.58,3.5
+"FD-0116","2024-09-25","West","Denver","Mexican","Chile Verde","Lunch","Android","Free","Clear","Yes",3,4.6,35.9,14.76,2.58,17.34,3.5
+"FD-0117","2024-09-25","West","Seattle","Thai","Night Market Bowl","Lunch","Android","Pro","Clear","No",3,3.09,28.2,14.32,2.69,17.01,4.5
+"FD-0118","2024-09-27","West","Portland","Ramen","Tonkotsu Lab","Dinner","iOS","Plus","Cloudy","No",3,4.64,43.6,15.43,3.64,19.07,4
+"FD-0119","2024-09-27","South","Austin","Mexican","Masa & Lime","Afternoon","Android","Free","Clear","No",3,4.5,30.1,10.64,0.79,11.43,4
+"FD-0120","2024-09-30","West","Portland","Sushi","Omakase Express","Dinner","Android","Free","Cloudy","No",4,6.33,49.8,24.85,3.88,28.73,3.5
+"FD-0121","2024-10-01","West","Portland","Mediterranean","Olive & Fig","Late Night","Android","Plus","Clear","No",3,4.22,26.9,25.22,3.69,28.91,4
+"FD-0122","2024-10-03","South","Austin","Mexican","Chile Verde","Late Night","Android","Free","Rain","No",4,2.03,21.1,12.06,0.98,13.04,4.5
+"FD-0123","2024-10-03","South","Austin","Ramen","Midnight Noodle","Dinner","Android","Plus","Rain","No",2,2.66,34.7,16.59,2.88,19.47,4
+"FD-0124","2024-10-05","Midwest","Chicago","Burgers","Smash District","Dinner","Android","Plus","Cloudy","No",3,4.53,35,20.02,4.09,24.11,4.5
+"FD-0125","2024-10-06","South","Miami","Thai","Lemongrass Cart","Lunch","Android","Free","Snow","No",3,4.8,52.7,23.53,3.82,27.35,3
+"FD-0126","2024-10-06","West","Portland","Burgers","Smash District","Lunch","Android","Free","Clear","No",3,1.69,21.1,9.49,0.86,10.35,3.5
+"FD-0127","2024-10-07","Midwest","Chicago","Sushi","Pacific Roll","Late Night","iOS","Pro","Rain","Yes",5,2.61,26.9,21.27,6.62,27.89,4
+"FD-0128","2024-10-07","Midwest","Chicago","Thai","Night Market Bowl","Lunch","Web","Free","Cloudy","No",2,4.31,37.5,22.31,2.33,24.64,4
+"FD-0129","2024-10-09","West","Denver","Burgers","Patty Wagon","Dinner","iOS","Pro","Rain","No",2,6.53,47.2,20.54,2.91,23.45,3.5
+"FD-0130","2024-10-09","West","Portland","Mexican","Taco Libre","Late Night","iOS","Plus","Clear","Yes",3,3.43,18.1,13.88,3.04,16.92,4
+"FD-0131","2024-10-10","South","Austin","Indian","Tandoor Lane","Dinner","iOS","Free","Clear","Yes",3,2.24,27.4,18.39,3.82,22.21,3.5
+"FD-0132","2024-10-12","West","Portland","Sushi","Omakase Express","Late Night","iOS","Plus","Rain","Yes",3,4.8,41,21.65,3.47,25.12,4
+"FD-0133","2024-10-14","South","Miami","Mediterranean","Pita Press","Dinner","Web","Pro","Rain","No",3,1.83,32.6,23.39,4.17,27.56,4
+"FD-0134","2024-10-15","West","Seattle","Burgers","Patty Wagon","Dinner","Android","Free","Clear","No",3,3.56,30.9,15,0.82,15.82,4
+"FD-0135","2024-10-15","South","Austin","Mexican","Chile Verde","Dinner","Android","Free","Clear","No",2,3.04,35.1,15.04,2.3,17.34,4
+"FD-0136","2024-10-17","West","Denver","Mediterranean","Pita Press","Dinner","iOS","Free","Clear","No",4,4.59,38.3,19.86,1.56,21.42,4
+"FD-0137","2024-10-17","West","Seattle","Ramen","Broth & Bone","Afternoon","Android","Free","Snow","No",4,1.15,27.5,20.36,0.73,21.09,4.5
+"FD-0138","2024-10-17","West","Denver","Mediterranean","Citrus Grill","Dinner","iOS","Free","Clear","No",3,3.2,30.5,15.16,3.27,18.43,4.5
+"FD-0139","2024-10-18","West","Seattle","Ramen","Midnight Noodle","Dinner","Android","Free","Cloudy","No",2,2.44,26,18.06,2.26,20.32,4
+"FD-0140","2024-10-20","Midwest","Chicago","Pizza","Slice Theory","Lunch","iOS","Plus","Rain","No",3,3.54,35,21.98,2.8,24.78,5
+"FD-0141","2024-10-20","South","Nashville","Mediterranean","Pita Press","Dinner","iOS","Free","Clear","No",2,3.95,29.8,19.43,3.5,22.93,4
+"FD-0142","2024-10-25","West","Portland","Mexican","Masa & Lime","Late Night","Web","Plus","Cloudy","No",3,7.61,36.4,16.68,2.35,19.03,3.5
+"FD-0143","2024-10-25","Midwest","Chicago","Indian","Masala Hour","Late Night","Android","Free","Rain","No",2,4.85,38.2,14.21,1.05,15.26,4
+"FD-0144","2024-10-26","East","Boston","Sushi","Omakase Express","Late Night","Web","Free","Clear","No",3,2.96,20.5,24.04,3.04,27.08,4.5
+"FD-0145","2024-10-26","South","Nashville","Sushi","Pacific Roll","Dinner","iOS","Plus","Cloudy","No",4,5.32,38.4,30.01,5.24,35.25,4
+"FD-0146","2024-10-27","East","Boston","Indian","Cardamom Cart","Dinner","Android","Plus","Rain","No",4,4.3,43.4,28.65,5.15,33.8,4
+"FD-0147","2024-10-28","South","Nashville","Ramen","Midnight Noodle","Lunch","iOS","Free","Rain","No",3,5.02,47.3,18.69,3.42,22.11,3.5
+"FD-0148","2024-10-29","West","Seattle","Indian","Cardamom Cart","Lunch","Web","Free","Cloudy","No",5,3.29,26.5,23.77,3.36,27.13,4.5
+"FD-0149","2024-10-29","South","Austin","Mediterranean","Pita Press","Late Night","iOS","Free","Clear","No",1,5.63,30.9,12.61,0.96,13.57,3.5
+"FD-0150","2024-10-31","West","Denver","Sushi","Pacific Roll","Dinner","Web","Pro","Clear","No",4,2.83,30.7,36,8.18,44.18,3.5
+"FD-0151","2024-11-01","East","Boston","Sushi","Omakase Express","Lunch","Android","Plus","Clear","No",5,4,26.5,20.76,2.76,23.52,4
+"FD-0152","2024-11-01","South","Miami","Mediterranean","Pita Press","Late Night","Android","Free","Cloudy","No",3,5.44,32.9,15.13,2.16,17.29,4.5
+"FD-0153","2024-11-04","West","Denver","Thai","Bangkok Alley","Late Night","iOS","Pro","Clear","No",5,1.11,18.1,23.29,3.78,27.07,4
+"FD-0154","2024-11-04","West","Portland","Mediterranean","Olive & Fig","Dinner","iOS","Pro","Clear","No",3,4.02,36.2,17.96,4.18,22.14,4
+"FD-0155","2024-11-05","East","Boston","Indian","Tandoor Lane","Dinner","Android","Free","Rain","Yes",3,4.07,37.6,20.08,2.35,22.43,3.5
+"FD-0156","2024-11-05","South","Austin","Burgers","Patty Wagon","Dinner","Android","Pro","Clear","No",3,4.42,37.6,16.92,3.12,20.04,4
+"FD-0157","2024-11-06","South","Austin","Mexican","Chile Verde","Dinner","Web","Free","Rain","Yes",3,2.16,37.4,13.77,1.46,15.23,3.5
+"FD-0158","2024-11-06","West","Denver","Pizza","Wood Oven Co","Afternoon","Android","Free","Snow","No",4,2.75,35.2,16.86,2.33,19.19,3.5
+"FD-0159","2024-11-07","West","Seattle","Pizza","Wood Oven Co","Dinner","iOS","Free","Clear","No",5,6.41,42.4,26.1,3.4,29.5,3.5
+"FD-0160","2024-11-07","South","Nashville","Mediterranean","Pita Press","Dinner","Web","Free","Rain","Yes",5,2.36,32,23.25,3.56,26.81,4
+"FD-0161","2024-11-10","West","Denver","Mediterranean","Citrus Grill","Lunch","Android","Pro","Clear","No",3,3.44,32.3,17.78,3.92,21.7,4.5
+"FD-0162","2024-11-11","West","Portland","Mediterranean","Citrus Grill","Dinner","iOS","Free","Cloudy","No",7,5.06,47.5,24.41,2.38,26.79,3
+"FD-0163","2024-11-13","West","Denver","Mexican","Taco Libre","Dinner","iOS","Pro","Cloudy","No",3,1.9,24.8,19.75,3.8,23.55,4.5
+"FD-0164","2024-11-13","West","Seattle","Burgers","Patty Wagon","Lunch","Web","Free","Clear","No",3,3.16,25.6,16.35,1.98,18.33,4
+"FD-0165","2024-11-17","West","Denver","Sushi","Omakase Express","Afternoon","iOS","Free","Clear","No",5,3.23,29,22.49,3.22,25.71,4.5
+"FD-0166","2024-11-18","South","Nashville","Mexican","Masa & Lime","Dinner","Web","Plus","Snow","No",2,5.7,48.5,18.7,3.86,22.56,4
+"FD-0167","2024-11-18","East","Boston","Ramen","Midnight Noodle","Late Night","Android","Free","Rain","No",3,3.51,29.9,14.93,2.13,17.06,4
+"FD-0168","2024-11-19","West","Portland","Thai","Bangkok Alley","Afternoon","Android","Plus","Cloudy","No",3,4.29,30.7,13.24,2.42,15.66,4.5
+"FD-0169","2024-11-20","South","Austin","Pizza","Wood Oven Co","Late Night","Android","Free","Clear","Yes",4,7.85,42.3,20.39,2.46,22.85,3.5
+"FD-0170","2024-11-21","South","Nashville","Sushi","Pacific Roll","Dinner","iOS","Plus","Cloudy","No",7,2.38,30.8,24.23,4.29,28.52,3.5
+"FD-0171","2024-11-22","West","Seattle","Burgers","Gold Bun","Afternoon","Android","Pro","Clear","No",2,2.97,22.2,11.8,2.28,14.08,4
+"FD-0172","2024-11-26","South","Miami","Ramen","Midnight Noodle","Dinner","Android","Plus","Rain","Yes",3,2.48,34.8,13.38,3.28,16.66,3.5
+"FD-0173","2024-11-27","West","Portland","Pizza","Late Night Pie","Dinner","Web","Plus","Clear","No",4,2.87,31.6,28.76,4.24,33,3.5
+"FD-0174","2024-11-28","West","Denver","Mediterranean","Citrus Grill","Dinner","iOS","Free","Cloudy","No",3,2.57,29.8,13.24,0.94,14.18,3
+"FD-0175","2024-11-28","South","Nashville","Mediterranean","Citrus Grill","Dinner","iOS","Free","Clear","No",5,1.82,21.8,16.47,2.46,18.93,4.5
+"FD-0176","2024-11-29","South","Nashville","Pizza","Wood Oven Co","Late Night","Web","Plus","Clear","Yes",4,2.26,16.7,22.84,3.08,25.92,3.5
+"FD-0177","2024-11-29","South","Nashville","Ramen","Tonkotsu Lab","Lunch","Web","Free","Rain","Yes",1,2.72,29.5,10.99,2.95,13.94,4
+"FD-0178","2024-11-29","South","Austin","Indian","Tandoor Lane","Dinner","Android","Free","Snow","No",3,1.27,41.5,25.06,2.02,27.08,3
+"FD-0179","2024-11-30","Midwest","Chicago","Indian","Tandoor Lane","Afternoon","Android","Pro","Clear","No",2,1.75,17.6,19.68,3.16,22.84,5
+"FD-0180","2024-11-30","West","Portland","Mexican","Chile Verde","Dinner","iOS","Plus","Snow","No",3,5.68,49.4,19.62,3.12,22.74,3.5
+"FD-0181","2024-12-03","West","Portland","Ramen","Tonkotsu Lab","Afternoon","Android","Plus","Rain","No",4,2.88,31.7,15.73,3.16,18.89,4
+"FD-0182","2024-12-04","South","Austin","Burgers","Patty Wagon","Afternoon","iOS","Free","Clear","No",1,2.99,18.9,12.89,0.58,13.47,4
+"FD-0183","2024-12-05","Midwest","Chicago","Thai","Night Market Bowl","Lunch","Android","Free","Clear","No",3,2.57,26,20.85,2.5,23.35,4
+"FD-0184","2024-12-06","West","Denver","Ramen","Midnight Noodle","Dinner","iOS","Plus","Cloudy","Yes",3,2.5,29.2,19.91,3.85,23.76,4
+"FD-0185","2024-12-07","South","Miami","Burgers","Gold Bun","Dinner","iOS","Plus","Rain","No",3,4.55,40.5,15.79,3.02,18.81,4
+"FD-0186","2024-12-09","South","Miami","Pizza","Wood Oven Co","Afternoon","iOS","Free","Rain","Yes",3,2.23,26.6,17.79,3.91,21.7,4.5
+"FD-0187","2024-12-11","Midwest","Chicago","Mexican","Masa & Lime","Late Night","Android","Free","Clear","No",3,2.9,24.3,17.98,1,18.98,4.5
+"FD-0188","2024-12-11","West","Seattle","Pizza","Late Night Pie","Lunch","Android","Free","Clear","Yes",4,5.38,40.6,14.65,2.37,17.02,4
+"FD-0189","2024-12-12","Midwest","Chicago","Sushi","Pacific Roll","Lunch","Android","Free","Cloudy","No",3,5.81,37.7,23.41,2.64,26.05,3.5
+"FD-0190","2024-12-12","South","Austin","Thai","Bangkok Alley","Afternoon","iOS","Free","Rain","Yes",4,3.11,22.7,8.77,1.28,10.05,4
+"FD-0191","2024-12-15","East","Boston","Burgers","Gold Bun","Lunch","Web","Plus","Clear","No",2,2.93,25.2,13.06,1.63,14.69,4.5
+"FD-0192","2024-12-16","South","Nashville","Mexican","Masa & Lime","Afternoon","iOS","Free","Clear","No",3,2.05,25.9,16.12,2.06,18.18,4.5
+"FD-0193","2024-12-17","West","Seattle","Mediterranean","Pita Press","Lunch","Android","Pro","Cloudy","No",3,1.18,18.3,22.79,3.77,26.56,5
+"FD-0194","2024-12-19","Midwest","Chicago","Sushi","Nori Desk","Lunch","iOS","Free","Clear","No",4,3.27,30.7,27.4,1.18,28.58,4
+"FD-0195","2024-12-19","Midwest","Chicago","Sushi","Nori Desk","Late Night","iOS","Plus","Cloudy","No",4,2.08,16.1,25.19,1.69,26.88,4
+"FD-0196","2024-12-20","East","Boston","Indian","Cardamom Cart","Late Night","Android","Free","Clear","No",3,3.36,28.1,18.74,2.33,21.07,4.5
+"FD-0197","2024-12-20","Midwest","Chicago","Burgers","Gold Bun","Late Night","Android","Free","Clear","No",4,3.66,27.5,26.01,2.51,28.52,4.5
+"FD-0198","2024-12-21","East","Boston","Thai","Bangkok Alley","Lunch","iOS","Free","Clear","No",3,1.4,16.6,14.62,2.16,16.78,4
+"FD-0199","2024-12-24","South","Miami","Mexican","Chile Verde","Dinner","iOS","Plus","Cloudy","No",1,2.14,28.2,12.06,2.16,14.22,4.5
+"FD-0200","2024-12-24","Midwest","Chicago","Pizza","Late Night Pie","Lunch","Android","Free","Rain","Yes",3,3.74,38.3,14.03,1.63,15.66,3.5
+"FD-0201","2024-12-25","West","Portland","Ramen","Tonkotsu Lab","Late Night","Web","Plus","Clear","No",5,7.41,43.3,17.12,2.47,19.59,4
+"FD-0202","2024-12-25","South","Nashville","Burgers","Smash District","Lunch","iOS","Free","Clear","Yes",2,2.38,23.4,11.95,1.36,13.31,3.5
+"FD-0203","2024-12-26","West","Seattle","Pizza","Late Night Pie","Lunch","iOS","Free","Rain","No",6,2.86,33.6,25.8,3.85,29.65,4
+"FD-0204","2024-12-26","Midwest","Chicago","Pizza","Wood Oven Co","Afternoon","Web","Free","Cloudy","No",4,5.9,39.9,21.53,2.34,23.87,3.5
+"FD-0205","2024-12-26","South","Miami","Ramen","Broth & Bone","Dinner","Android","Pro","Clear","No",3,1.78,26.8,28.06,6.44,34.5,4.5
+"FD-0206","2024-12-29","West","Seattle","Burgers","Gold Bun","Late Night","Android","Free","Cloudy","No",3,2.33,13.4,16.81,2.72,19.53,4
+"FD-0207","2024-12-30","South","Nashville","Ramen","Broth & Bone","Afternoon","iOS","Pro","Rain","No",4,3.17,31.7,15.75,2.49,18.24,3.5
+"FD-0208","2024-12-30","Midwest","Chicago","Sushi","Omakase Express","Dinner","iOS","Pro","Rain","Yes",3,5.18,43.2,24.55,6.55,31.1,4
+"FD-0209","2024-12-30","West","Seattle","Ramen","Tonkotsu Lab","Dinner","Android","Free","Cloudy","No",4,1.69,25.8,17.71,2.59,20.3,4.5
+"FD-0210","2024-12-31","Midwest","Chicago","Burgers","Smash District","Dinner","Android","Free","Clear","Yes",5,1.9,27.3,14.09,3.1,17.19,3.5
+"FD-0211","2025-01-01","Midwest","Chicago","Burgers","Smash District","Dinner","Android","Free","Snow","No",3,2.42,39.9,18.33,2.14,20.47,4
+"FD-0212","2025-01-01","South","Austin","Indian","Masala Hour","Dinner","Android","Free","Rain","No",3,2.62,35.8,20.87,3.63,24.5,4.5
+"FD-0213","2025-01-01","West","Seattle","Pizza","Late Night Pie","Late Night","Web","Free","Clear","No",2,3.12,24.6,19.94,1.68,21.62,4
+"FD-0214","2025-01-02","Midwest","Chicago","Mexican","Chile Verde","Dinner","iOS","Free","Snow","Yes",2,3.49,44.5,10.03,1.4,11.43,4
+"FD-0215","2025-01-07","West","Portland","Indian","Cardamom Cart","Afternoon","iOS","Free","Clear","No",2,8.35,44.6,19.67,2.33,22,3
+"FD-0216","2025-01-07","South","Miami","Mexican","Masa & Lime","Late Night","iOS","Free","Clear","Yes",2,4.22,27.5,11.69,0.62,12.31,4
+"FD-0217","2025-01-07","South","Austin","Thai","Night Market Bowl","Dinner","iOS","Free","Cloudy","No",2,5.11,42,19.52,2.63,22.15,4
+"FD-0218","2025-01-08","South","Miami","Mediterranean","Olive & Fig","Dinner","iOS","Free","Clear","No",3,9.82,57.1,18.33,2.07,20.4,3.5
+"FD-0219","2025-01-11","Midwest","Chicago","Mexican","Chile Verde","Lunch","iOS","Free","Clear","Yes",3,6.45,46.2,14.32,2.53,16.85,4
+"FD-0220","2025-01-12","South","Nashville","Thai","Bangkok Alley","Dinner","Android","Free","Cloudy","No",3,3.47,31.8,13.9,1.77,15.67,4
+"FD-0221","2025-01-12","East","Boston","Mediterranean","Pita Press","Dinner","Web","Plus","Cloudy","Yes",4,4.48,32.8,14.31,3.22,17.53,4
+"FD-0222","2025-01-13","Midwest","Chicago","Mexican","Chile Verde","Dinner","Web","Pro","Cloudy","Yes",3,3.69,42.2,11.53,2.29,13.82,3.5
+"FD-0223","2025-01-13","East","Boston","Sushi","Pacific Roll","Late Night","Web","Free","Cloudy","Yes",4,11.21,56.4,21.96,4.36,26.32,3
+"FD-0224","2025-01-15","South","Austin","Pizza","Wood Oven Co","Dinner","iOS","Free","Snow","Yes",5,2.27,35,22.92,4.01,26.93,3.5
+"FD-0225","2025-01-15","West","Portland","Mediterranean","Olive & Fig","Late Night","Web","Free","Rain","Yes",5,1.86,29.1,19.99,5.75,25.74,4
+"FD-0226","2025-01-16","East","Boston","Mediterranean","Pita Press","Dinner","Android","Pro","Rain","Yes",2,2.12,28.6,12.72,2.26,14.98,4
+"FD-0227","2025-01-16","South","Miami","Sushi","Pacific Roll","Lunch","Android","Free","Clear","No",2,6.82,37.1,20.95,2.69,23.64,3.5
+"FD-0228","2025-01-18","South","Austin","Indian","Cardamom Cart","Dinner","iOS","Free","Rain","No",3,2.08,32.7,15.39,1.89,17.28,4
+"FD-0229","2025-01-20","West","Seattle","Ramen","Broth & Bone","Afternoon","iOS","Free","Cloudy","Yes",4,4.56,35.5,9.31,1.69,11,4
+"FD-0230","2025-01-22","West","Denver","Mexican","Chile Verde","Dinner","Android","Plus","Cloudy","No",6,2.92,31.6,19.25,1.65,20.9,4.5
+"FD-0231","2025-01-25","East","Boston","Sushi","Omakase Express","Lunch","Android","Free","Cloudy","No",2,2.81,26.5,17.3,2.24,19.54,4.5
+"FD-0232","2025-01-26","Midwest","Chicago","Burgers","Smash District","Afternoon","iOS","Free","Clear","No",4,2.43,20.5,14.89,1.8,16.69,4
+"FD-0233","2025-01-27","West","Seattle","Burgers","Gold Bun","Dinner","iOS","Plus","Clear","No",4,1.47,25.4,25.05,5.27,30.32,3.5
+"FD-0234","2025-01-29","West","Denver","Mexican","Masa & Lime","Lunch","iOS","Free","Cloudy","Yes",2,4.49,38.9,12.07,2.15,14.22,4
+"FD-0235","2025-01-31","South","Nashville","Burgers","Patty Wagon","Afternoon","iOS","Free","Clear","Yes",2,1.7,21.6,14.99,2.41,17.4,3.5
+"FD-0236","2025-02-01","East","Boston","Sushi","Omakase Express","Dinner","Web","Plus","Clear","No",8,1.6,26,33.42,3.37,36.79,4.5
+"FD-0237","2025-02-02","West","Portland","Mediterranean","Olive & Fig","Dinner","iOS","Plus","Rain","No",3,6.01,48.6,17.32,2.63,19.95,3.5
+"FD-0238","2025-02-02","West","Portland","Thai","Bangkok Alley","Lunch","Android","Pro","Rain","No",2,3.6,34.5,18.84,4.86,23.7,4.5
+"FD-0239","2025-02-03","South","Nashville","Mexican","Chile Verde","Dinner","Android","Pro","Clear","No",3,4.84,41.1,14.74,3.68,18.42,3.5
+"FD-0240","2025-02-04","South","Austin","Mexican","Masa & Lime","Late Night","iOS","Free","Clear","No",4,5.25,31.1,20.86,3.2,24.06,4
+"FD-0241","2025-02-04","West","Seattle","Mexican","Masa & Lime","Dinner","Android","Plus","Clear","No",2,1.69,26.3,12.02,2.75,14.77,4
+"FD-0242","2025-02-06","West","Portland","Thai","Night Market Bowl","Dinner","Android","Pro","Clear","No",2,2.71,26.6,18.04,4.18,22.22,4.5
+"FD-0243","2025-02-06","West","Portland","Thai","Bangkok Alley","Dinner","iOS","Pro","Clear","No",4,2.83,30.2,23.98,3.31,27.29,4
+"FD-0244","2025-02-07","South","Miami","Burgers","Gold Bun","Late Night","Android","Pro","Clear","No",2,2.55,14.4,14.54,2.31,16.85,4
+"FD-0245","2025-02-08","South","Nashville","Thai","Lemongrass Cart","Lunch","iOS","Plus","Cloudy","No",2,5.24,39.1,14.92,2.47,17.39,4
+"FD-0246","2025-02-08","South","Nashville","Burgers","Patty Wagon","Late Night","iOS","Free","Clear","Yes",2,3.57,27.1,11.66,1.9,13.56,4
+"FD-0247","2025-02-09","West","Seattle","Burgers","Patty Wagon","Dinner","Web","Plus","Clear","Yes",2,2.76,30.1,13.91,2.33,16.24,4.5
+"FD-0248","2025-02-10","South","Miami","Sushi","Nori Desk","Lunch","iOS","Plus","Clear","No",4,4.07,29.2,24.9,3.64,28.54,4.5
+"FD-0249","2025-02-11","West","Portland","Ramen","Midnight Noodle","Late Night","iOS","Free","Clear","Yes",2,4.13,26.4,13.52,2.33,15.85,4
+"FD-0250","2025-02-13","West","Denver","Mediterranean","Pita Press","Dinner","iOS","Free","Clear","Yes",3,1.61,27.7,14.56,3.7,18.26,4.5
+"FD-0251","2025-02-14","West","Portland","Pizza","Late Night Pie","Lunch","iOS","Plus","Rain","No",2,3.34,36.6,14.54,2.2,16.74,4
+"FD-0252","2025-02-15","South","Miami","Burgers","Smash District","Dinner","Android","Free","Clear","Yes",3,4.17,32.7,12.79,2.34,15.13,4
+"FD-0253","2025-02-15","South","Austin","Pizza","Slice Theory","Lunch","iOS","Plus","Clear","No",3,4.83,33.8,14.59,3.35,17.94,4
+"FD-0254","2025-02-17","West","Denver","Thai","Lemongrass Cart","Lunch","Android","Free","Clear","No",3,2.28,20.2,13.62,1.1,14.72,4.5
+"FD-0255","2025-02-17","Midwest","Chicago","Pizza","Late Night Pie","Lunch","iOS","Free","Cloudy","No",1,2.36,26.9,12.38,1.3,13.68,4
+"FD-0256","2025-02-18","West","Seattle","Mediterranean","Olive & Fig","Lunch","Android","Free","Clear","Yes",6,3.22,26.9,10.25,0.62,10.87,4.5
+"FD-0257","2025-02-18","South","Austin","Pizza","Wood Oven Co","Late Night","iOS","Plus","Clear","No",2,5.06,28.5,15.3,3.5,18.8,4.5
+"FD-0258","2025-02-18","West","Denver","Mexican","Taco Libre","Afternoon","Android","Free","Cloudy","Yes",2,4.18,27.6,9.11,1.66,10.77,4
+"FD-0259","2025-02-21","Midwest","Chicago","Pizza","Late Night Pie","Lunch","Web","Free","Clear","Yes",1,2.2,25.4,11.19,1.21,12.4,4
+"FD-0260","2025-02-21","West","Denver","Pizza","Slice Theory","Late Night","iOS","Plus","Clear","Yes",4,1.62,14.4,30.66,6.71,37.37,4.5
+"FD-0261","2025-02-23","West","Denver","Mexican","Chile Verde","Late Night","Android","Free","Clear","No",2,4.87,25.2,17.74,2.33,20.07,4
+"FD-0262","2025-02-24","Midwest","Chicago","Pizza","Late Night Pie","Lunch","iOS","Plus","Clear","No",3,5.11,34.8,13.72,2.36,16.08,4
+"FD-0263","2025-02-24","Midwest","Chicago","Mexican","Taco Libre","Dinner","iOS","Plus","Rain","No",4,2.12,36.6,22.03,3.01,25.04,4
+"FD-0264","2025-02-25","West","Seattle","Mexican","Masa & Lime","Dinner","Android","Pro","Snow","No",4,1.31,35.6,17.15,3.87,21.02,4.5
+"FD-0265","2025-02-25","East","Boston","Indian","Cardamom Cart","Afternoon","iOS","Pro","Rain","No",4,4.06,31.2,20.28,4.15,24.43,3.5
+"FD-0266","2025-02-25","West","Portland","Burgers","Smash District","Lunch","Android","Plus","Clear","Yes",4,2.21,25.5,14.58,2.42,17,3.5
+"FD-0267","2025-02-27","South","Austin","Ramen","Tonkotsu Lab","Late Night","iOS","Free","Clear","No",3,5.92,36.9,14.86,0.86,15.72,4
+"FD-0268","2025-03-01","South","Nashville","Burgers","Patty Wagon","Dinner","iOS","Free","Cloudy","Yes",5,2.74,27,21.26,2.61,23.87,4.5
+"FD-0269","2025-03-02","West","Seattle","Burgers","Patty Wagon","Afternoon","iOS","Free","Cloudy","No",1,1.85,20.7,10.29,1.75,12.04,4.5
+"FD-0270","2025-03-08","South","Austin","Thai","Bangkok Alley","Dinner","Android","Free","Snow","No",4,2.71,41.4,16.06,2.53,18.59,4
+"FD-0271","2025-03-11","South","Austin","Burgers","Patty Wagon","Dinner","Web","Free","Rain","No",2,5.49,49.7,15.47,2.98,18.45,3.5
+"FD-0272","2025-03-11","West","Portland","Mediterranean","Olive & Fig","Late Night","iOS","Plus","Clear","No",2,2.99,20.2,21.69,3.38,25.07,4
+"FD-0273","2025-03-12","South","Austin","Ramen","Tonkotsu Lab","Lunch","iOS","Plus","Clear","Yes",2,5.67,36.3,14.1,2.66,16.76,4
+"FD-0274","2025-03-12","Midwest","Chicago","Burgers","Gold Bun","Late Night","iOS","Pro","Clear","No",3,1.95,11.5,17.9,4.74,22.64,4
+"FD-0275","2025-03-13","Midwest","Chicago","Indian","Masala Hour","Dinner","iOS","Pro","Cloudy","No",2,2.69,31,21.26,3.98,25.24,4
+"FD-0276","2025-03-13","West","Seattle","Sushi","Pacific Roll","Late Night","Android","Free","Clear","No",4,4.43,21.9,20.58,3.3,23.88,5
+"FD-0277","2025-03-15","East","Boston","Pizza","Late Night Pie","Dinner","Android","Free","Cloudy","No",5,1.73,29.2,26.42,3.37,29.79,3.5
+"FD-0278","2025-03-15","West","Portland","Burgers","Gold Bun","Dinner","iOS","Free","Clear","No",1,3.01,29.7,11.7,1.51,13.21,4
+"FD-0279","2025-03-15","West","Seattle","Mediterranean","Olive & Fig","Late Night","Web","Pro","Clear","No",5,5.05,31.5,26.5,5.97,32.47,4.5
+"FD-0280","2025-03-16","Midwest","Chicago","Mexican","Taco Libre","Afternoon","iOS","Free","Rain","No",2,8.92,56,14.45,2.32,16.77,2.5
+"FD-0281","2025-03-17","West","Portland","Thai","Lemongrass Cart","Dinner","iOS","Free","Cloudy","No",3,3.86,33,21.94,3.34,25.28,4
+"FD-0282","2025-03-20","West","Portland","Thai","Bangkok Alley","Lunch","Android","Plus","Cloudy","Yes",5,7,44.6,13.14,1.36,14.5,4
+"FD-0283","2025-03-20","West","Denver","Mexican","Chile Verde","Dinner","iOS","Free","Clear","Yes",2,0.92,26.6,14.31,2.87,17.18,4.5
+"FD-0284","2025-03-20","Midwest","Chicago","Sushi","Omakase Express","Lunch","Web","Plus","Clear","No",4,1.99,23.6,27.4,5.36,32.76,4.5
+"FD-0285","2025-03-20","West","Seattle","Thai","Bangkok Alley","Dinner","Android","Free","Cloudy","No",3,2.69,36.5,22.89,2.96,25.85,3.5
+"FD-0286","2025-03-22","South","Miami","Mediterranean","Olive & Fig","Lunch","iOS","Free","Rain","No",5,3.36,41.6,19.65,2.54,22.19,3.5
+"FD-0287","2025-03-24","Midwest","Chicago","Mexican","Masa & Lime","Lunch","Web","Pro","Cloudy","No",3,3.43,29,18.98,3.83,22.81,3.5
+"FD-0288","2025-03-25","West","Seattle","Mexican","Taco Libre","Dinner","Web","Plus","Rain","No",3,4.33,42.9,17.97,4.26,22.23,4.5
+"FD-0289","2025-03-26","South","Nashville","Mediterranean","Olive & Fig","Dinner","Android","Free","Rain","No",3,1.99,29.9,19.88,1.55,21.43,4
+"FD-0290","2025-03-26","East","Boston","Indian","Masala Hour","Dinner","Web","Free","Clear","No",4,1.32,19.5,15.01,1.39,16.4,3.5
+"FD-0291","2025-03-27","West","Denver","Burgers","Gold Bun","Dinner","iOS","Free","Rain","No",4,2.06,24.2,15.3,3.04,18.34,4.5
+"FD-0292","2025-03-27","West","Portland","Sushi","Nori Desk","Late Night","iOS","Plus","Clear","No",3,4.21,25.6,28.48,6.28,34.76,4.5
+"FD-0293","2025-03-27","South","Austin","Mexican","Taco Libre","Dinner","Android","Pro","Cloudy","Yes",3,2.4,30.3,19.67,3.1,22.77,4
+"FD-0294","2025-03-29","West","Denver","Sushi","Pacific Roll","Lunch","Android","Pro","Clear","No",5,2.58,25.3,37.03,10.33,47.36,4.5
+"FD-0295","2025-03-31","West","Denver","Mexican","Masa & Lime","Dinner","iOS","Pro","Clear","No",5,1.56,22,23.64,4.31,27.95,5
+"FD-0296","2025-04-01","West","Seattle","Indian","Masala Hour","Dinner","Web","Free","Clear","No",2,3.72,34,14.76,1.13,15.89,4
+"FD-0297","2025-04-04","South","Miami","Burgers","Smash District","Dinner","iOS","Free","Clear","No",2,3.63,29.9,19.23,1.89,21.12,4
+"FD-0298","2025-04-06","South","Miami","Mexican","Masa & Lime","Dinner","iOS","Free","Clear","Yes",2,4.46,42.7,9.55,1.9,11.45,4
+"FD-0299","2025-04-07","South","Austin","Mexican","Masa & Lime","Afternoon","Web","Free","Cloudy","No",2,2.07,20.1,12.15,1.38,13.53,4
+"FD-0300","2025-04-07","West","Portland","Mexican","Taco Libre","Lunch","Android","Free","Clear","Yes",2,5.18,39.3,10.22,1.3,11.52,4
+"FD-0301","2025-04-08","West","Denver","Burgers","Gold Bun","Dinner","Web","Free","Rain","No",4,2.7,32.8,16.56,1.99,18.55,4
+"FD-0302","2025-04-09","East","Boston","Burgers","Gold Bun","Dinner","Android","Free","Clear","Yes",3,2.58,26.6,17.08,3.3,20.38,4
+"FD-0303","2025-04-09","West","Seattle","Indian","Cardamom Cart","Dinner","Android","Plus","Rain","No",5,7.34,53.5,27.61,5.59,33.2,4
+"FD-0304","2025-04-10","West","Seattle","Pizza","Wood Oven Co","Lunch","iOS","Plus","Cloudy","Yes",5,2.81,22.9,21.96,5.33,27.29,3
+"FD-0305","2025-04-11","West","Portland","Mexican","Chile Verde","Dinner","iOS","Free","Clear","No",3,2.84,39.9,14.05,1.61,15.66,3.5
+"FD-0306","2025-04-11","South","Miami","Mediterranean","Citrus Grill","Late Night","Web","Plus","Clear","No",1,3.37,21.2,12.9,0.71,13.61,4.5
+"FD-0307","2025-04-11","South","Nashville","Ramen","Tonkotsu Lab","Dinner","iOS","Free","Cloudy","No",3,4.65,34,14.86,2.67,17.53,4
+"FD-0308","2025-04-12","Midwest","Chicago","Thai","Lemongrass Cart","Late Night","iOS","Free","Rain","No",4,5.57,40,22.87,2.15,25.02,4.5
+"FD-0309","2025-04-14","Midwest","Chicago","Sushi","Nori Desk","Lunch","Android","Plus","Clear","No",3,2.94,20.4,24.96,4.01,28.97,4.5
+"FD-0310","2025-04-14","West","Seattle","Mediterranean","Pita Press","Dinner","iOS","Free","Snow","No",3,1.94,31.1,15.32,2.12,17.44,3.5
+"FD-0311","2025-04-18","South","Austin","Mediterranean","Citrus Grill","Dinner","iOS","Free","Clear","No",4,1.97,20.3,23.88,4.02,27.9,4
+"FD-0312","2025-04-21","West","Portland","Thai","Lemongrass Cart","Afternoon","Web","Pro","Rain","No",3,3.28,38.8,19.86,2.8,22.66,4
+"FD-0313","2025-04-21","Midwest","Chicago","Ramen","Tonkotsu Lab","Lunch","Android","Plus","Cloudy","No",3,4.19,35.1,17.69,3.42,21.11,3.5
+"FD-0314","2025-04-22","South","Miami","Mexican","Chile Verde","Dinner","Android","Plus","Cloudy","No",4,3.19,28.4,21.11,2.73,23.84,4.5
+"FD-0315","2025-04-22","South","Miami","Indian","Cardamom Cart","Dinner","Android","Free","Clear","No",3,3.16,31,15.24,0.95,16.19,4.5
+"FD-0316","2025-04-24","West","Denver","Indian","Cardamom Cart","Afternoon","Android","Plus","Clear","No",1,5.07,31.6,11.91,1.19,13.1,4.5
+"FD-0317","2025-04-24","South","Miami","Burgers","Patty Wagon","Dinner","iOS","Plus","Cloudy","No",4,5.78,36.2,29.18,4.56,33.74,4
+"FD-0318","2025-04-26","West","Seattle","Pizza","Slice Theory","Afternoon","Android","Free","Clear","Yes",2,0.82,11.5,16.81,3.53,20.34,3.5
+"FD-0319","2025-04-27","West","Portland","Thai","Night Market Bowl","Dinner","Web","Free","Clear","No",2,3.3,30.5,18.6,2.38,20.98,4
+"FD-0320","2025-05-02","South","Miami","Ramen","Tonkotsu Lab","Lunch","iOS","Free","Cloudy","Yes",5,2.67,23.3,8.02,0.76,8.78,4
+"FD-0321","2025-05-04","South","Austin","Mexican","Taco Libre","Dinner","Web","Plus","Clear","No",1,2.45,28.6,13.17,1.41,14.58,3.5
+"FD-0322","2025-05-04","West","Seattle","Indian","Tandoor Lane","Dinner","Android","Pro","Clear","No",5,3.75,37.9,26,5.37,31.37,4
+"FD-0323","2025-05-04","West","Portland","Mexican","Masa & Lime","Lunch","Android","Plus","Clear","No",2,2.35,22,12.8,2.55,15.35,4.5
+"FD-0324","2025-05-05","West","Denver","Pizza","Wood Oven Co","Lunch","Android","Free","Clear","Yes",4,5.15,35.8,15.64,0.35,15.99,3.5
+"FD-0325","2025-05-06","Midwest","Chicago","Indian","Cardamom Cart","Lunch","Android","Free","Clear","Yes",1,2.05,24.3,8.27,1.06,9.33,4.5
+"FD-0326","2025-05-07","South","Nashville","Burgers","Patty Wagon","Dinner","iOS","Free","Clear","No",2,3.66,29.2,19.12,0.92,20.04,4.5
+"FD-0327","2025-05-08","Midwest","Chicago","Mexican","Taco Libre","Lunch","Android","Plus","Clear","No",2,4.16,37.6,12.77,1.9,14.67,4
+"FD-0328","2025-05-13","West","Portland","Burgers","Smash District","Late Night","Android","Free","Snow","No",3,2.54,25.4,19.34,2.73,22.07,4
+"FD-0329","2025-05-13","South","Nashville","Mediterranean","Olive & Fig","Afternoon","iOS","Plus","Cloudy","No",3,3.3,26.3,14.11,2.11,16.22,4.5
+"FD-0330","2025-05-14","West","Portland","Burgers","Smash District","Lunch","iOS","Pro","Cloudy","No",3,3.43,34.7,15.48,2.17,17.65,4
+"FD-0331","2025-05-15","West","Portland","Burgers","Patty Wagon","Dinner","iOS","Plus","Rain","No",4,3.15,41.8,22.42,3.59,26.01,3.5
+"FD-0332","2025-05-15","South","Austin","Thai","Night Market Bowl","Dinner","iOS","Plus","Clear","No",6,4.18,32.9,22.83,3.61,26.44,3.5
+"FD-0333","2025-05-15","South","Austin","Mediterranean","Citrus Grill","Dinner","iOS","Plus","Clear","No",3,7.34,43.8,24.01,3.12,27.13,3.5
+"FD-0334","2025-05-15","Midwest","Chicago","Burgers","Patty Wagon","Dinner","Android","Free","Clear","No",3,2.21,26.2,19.01,3.17,22.18,5
+"FD-0335","2025-05-17","West","Portland","Indian","Tandoor Lane","Afternoon","iOS","Pro","Rain","No",3,2.72,27.7,13.51,2.71,16.22,4
+"FD-0336","2025-05-18","West","Seattle","Burgers","Smash District","Lunch","Android","Free","Clear","No",2,1.94,22.7,9.39,1.29,10.68,4.5
+"FD-0337","2025-05-19","South","Austin","Burgers","Gold Bun","Dinner","iOS","Pro","Rain","No",3,3.23,41.4,23.92,4.48,28.4,4
+"FD-0338","2025-05-20","Midwest","Chicago","Sushi","Nori Desk","Late Night","Android","Free","Snow","No",4,1.93,26.3,23.78,3.2,26.98,3.5
+"FD-0339","2025-05-21","South","Austin","Mexican","Masa & Lime","Late Night","Android","Free","Snow","No",4,3.5,33.8,17.45,2.53,19.98,4
+"FD-0340","2025-05-22","South","Austin","Indian","Cardamom Cart","Late Night","Android","Free","Cloudy","No",3,3.95,26,23.4,2.41,25.81,3.5
+"FD-0341","2025-05-23","Midwest","Chicago","Mexican","Masa & Lime","Lunch","Android","Pro","Snow","No",2,4.3,43.4,17.43,3.06,20.49,4
+"FD-0342","2025-05-23","South","Nashville","Mexican","Taco Libre","Late Night","Android","Free","Clear","No",2,2.25,17.2,17.06,2.2,19.26,4
+"FD-0343","2025-05-23","West","Seattle","Mexican","Taco Libre","Dinner","Android","Free","Rain","Yes",4,1.99,39.3,19.42,4.52,23.94,4
+"FD-0344","2025-05-24","South","Nashville","Indian","Cardamom Cart","Afternoon","Android","Free","Clear","Yes",2,2.19,19.5,12.25,1.65,13.9,4
+"FD-0345","2025-05-25","South","Nashville","Pizza","Slice Theory","Dinner","iOS","Free","Rain","No",4,4.88,42.4,29.34,5.51,34.85,3.5
+"FD-0346","2025-05-25","South","Nashville","Burgers","Smash District","Late Night","Android","Free","Clear","Yes",2,1.79,24.8,15.16,1.81,16.97,4.5
+"FD-0347","2025-05-25","Midwest","Chicago","Pizza","Late Night Pie","Dinner","Web","Pro","Rain","No",5,2.39,32.6,32.2,9.11,41.31,3.5
+"FD-0348","2025-05-27","South","Miami","Mediterranean","Citrus Grill","Dinner","Web","Pro","Cloudy","No",3,3.11,30.9,25.69,4.94,30.63,4.5
+"FD-0349","2025-05-27","South","Austin","Ramen","Broth & Bone","Late Night","iOS","Plus","Clear","No",4,1.55,15.8,15.09,2.9,17.99,3.5
+"FD-0350","2025-05-28","West","Portland","Indian","Cardamom Cart","Late Night","iOS","Pro","Cloudy","No",3,4.32,33.6,19.63,2.92,22.55,4
+"FD-0351","2025-05-29","South","Miami","Indian","Tandoor Lane","Dinner","iOS","Pro","Clear","No",3,5.07,35.9,19.78,3.48,23.26,4
+"FD-0352","2025-05-31","West","Portland","Mediterranean","Olive & Fig","Late Night","iOS","Plus","Cloudy","No",3,5.4,35.1,20.67,2.97,23.64,4
+"FD-0353","2025-05-31","West","Portland","Thai","Bangkok Alley","Dinner","iOS","Pro","Clear","Yes",3,1.16,19.1,20.85,4.48,25.33,4
+"FD-0354","2025-06-02","West","Portland","Burgers","Patty Wagon","Dinner","iOS","Free","Snow","Yes",2,3.72,41.8,15.44,3.05,18.49,3.5
+"FD-0355","2025-06-03","South","Austin","Sushi","Omakase Express","Lunch","iOS","Free","Clear","No",5,6.01,42.1,43.91,4.8,48.71,4
+"FD-0356","2025-06-05","South","Austin","Indian","Tandoor Lane","Dinner","iOS","Pro","Clear","No",3,2.98,37.2,19.3,4.61,23.91,4
+"FD-0357","2025-06-05","East","Boston","Indian","Masala Hour","Afternoon","iOS","Plus","Clear","No",4,2.43,15.3,13.81,2.04,15.85,4.5
+"FD-0358","2025-06-05","Midwest","Chicago","Ramen","Tonkotsu Lab","Dinner","iOS","Plus","Clear","No",3,4.25,34.1,15.67,1.9,17.57,4
+"FD-0359","2025-06-05","Midwest","Chicago","Mexican","Taco Libre","Afternoon","Android","Free","Snow","No",4,4.91,43.6,12.24,1.63,13.87,3
+"FD-0360","2025-06-06","South","Austin","Sushi","Omakase Express","Late Night","iOS","Free","Rain","No",3,2.92,25.9,18.69,2.91,21.6,4
+"FD-0361","2025-06-06","South","Nashville","Thai","Bangkok Alley","Afternoon","Android","Free","Cloudy","No",2,4.26,27.3,16.34,1.95,18.29,3.5
+"FD-0362","2025-06-07","West","Portland","Mediterranean","Pita Press","Late Night","iOS","Free","Snow","No",1,3.86,32.8,12.23,2.15,14.38,3.5
+"FD-0363","2025-06-08","South","Austin","Burgers","Patty Wagon","Afternoon","iOS","Free","Clear","Yes",3,5.62,30.1,12.68,2.04,14.72,3.5
+"FD-0364","2025-06-10","West","Portland","Thai","Night Market Bowl","Dinner","Web","Pro","Clear","No",4,2.7,30,29.63,5.31,34.94,4
+"FD-0365","2025-06-10","East","Boston","Burgers","Smash District","Lunch","Android","Free","Clear","Yes",1,2.73,26.8,8.16,1.4,9.56,4
+"FD-0366","2025-06-12","South","Miami","Thai","Lemongrass Cart","Afternoon","Android","Plus","Clear","No",2,5.63,29.7,10.19,1.47,11.66,4
+"FD-0367","2025-06-13","South","Austin","Pizza","Late Night Pie","Lunch","Web","Plus","Clear","Yes",2,2.61,24.9,15.1,3.06,18.16,4
+"FD-0368","2025-06-14","West","Portland","Indian","Tandoor Lane","Late Night","Android","Plus","Cloudy","No",2,1.86,18.5,17.97,3.13,21.1,4.5
+"FD-0369","2025-06-14","South","Miami","Burgers","Patty Wagon","Afternoon","iOS","Plus","Clear","Yes",2,1.09,14.3,15.19,1.99,17.18,4.5
+"FD-0370","2025-06-15","West","Portland","Mediterranean","Pita Press","Afternoon","iOS","Plus","Clear","No",4,3.04,24.1,14.77,1.76,16.53,4.5
+"FD-0371","2025-06-18","East","Boston","Mediterranean","Pita Press","Dinner","Android","Free","Clear","Yes",4,2.99,27.2,19.59,2.41,22,4
+"FD-0372","2025-06-19","South","Austin","Ramen","Broth & Bone","Dinner","iOS","Free","Rain","Yes",3,3.66,39.3,16.3,5.02,21.32,4
+"FD-0373","2025-06-23","Midwest","Chicago","Mediterranean","Olive & Fig","Dinner","iOS","Pro","Clear","Yes",3,4.63,33.3,23.94,6.99,30.93,4.5
+"FD-0374","2025-06-23","West","Portland","Mediterranean","Olive & Fig","Afternoon","iOS","Free","Snow","No",2,6.66,46.8,11.67,0.82,12.49,3.5
+"FD-0375","2025-06-25","West","Seattle","Mexican","Chile Verde","Lunch","iOS","Free","Rain","No",3,4.05,36.6,10.51,2.02,12.53,4
+"FD-0376","2025-06-26","West","Seattle","Pizza","Late Night Pie","Dinner","iOS","Pro","Clear","No",6,1.84,28.3,25.84,4.83,30.67,4.5
+"FD-0377","2025-06-27","West","Portland","Ramen","Midnight Noodle","Lunch","iOS","Plus","Snow","No",2,2.91,43.2,11.71,2.06,13.77,3.5
+"FD-0378","2025-06-30","West","Portland","Pizza","Late Night Pie","Late Night","Android","Plus","Cloudy","Yes",3,3.79,21.6,15.22,4.04,19.26,4
+"FD-0379","2025-07-01","West","Seattle","Sushi","Pacific Roll","Dinner","iOS","Plus","Cloudy","No",4,7.24,47.5,30.81,5.59,36.4,4
+"FD-0380","2025-07-04","West","Seattle","Ramen","Broth & Bone","Afternoon","iOS","Pro","Rain","No",5,4.68,39.2,13.81,3.29,17.1,4
+"FD-0381","2025-07-04","West","Portland","Thai","Night Market Bowl","Dinner","iOS","Free","Clear","Yes",4,2.68,26,21.27,3.18,24.45,4
+"FD-0382","2025-07-05","South","Austin","Burgers","Gold Bun","Late Night","Web","Free","Rain","No",1,3.51,34.2,13.41,2.24,15.65,4
+"FD-0383","2025-07-06","South","Nashville","Ramen","Tonkotsu Lab","Dinner","Web","Free","Rain","No",1,1.87,32.2,12.57,1.94,14.51,4
+"FD-0384","2025-07-06","South","Nashville","Sushi","Pacific Roll","Dinner","iOS","Pro","Rain","No",4,4.23,42.7,32.42,8.08,40.5,4
+"FD-0385","2025-07-07","South","Austin","Ramen","Tonkotsu Lab","Late Night","iOS","Plus","Cloudy","No",3,2.95,23.3,21.08,2.46,23.54,4
+"FD-0386","2025-07-07","West","Seattle","Mediterranean","Pita Press","Dinner","iOS","Plus","Clear","No",2,2.23,30.1,16.48,3.96,20.44,4
+"FD-0387","2025-07-08","South","Nashville","Mexican","Masa & Lime","Late Night","iOS","Plus","Clear","No",2,2.09,19.8,14.85,2.44,17.29,4.5
+"FD-0388","2025-07-08","West","Seattle","Burgers","Patty Wagon","Lunch","Android","Plus","Clear","Yes",2,2.02,26.3,11.02,1.61,12.63,4.5
+"FD-0389","2025-07-09","West","Denver","Thai","Night Market Bowl","Lunch","iOS","Plus","Cloudy","No",4,3.03,33.4,21.23,1.73,22.96,4
+"FD-0390","2025-07-10","South","Miami","Ramen","Midnight Noodle","Lunch","iOS","Free","Cloudy","No",3,3.29,29.1,11.76,0.18,11.94,4
+"FD-0391","2025-07-10","West","Portland","Sushi","Omakase Express","Dinner","Android","Free","Rain","No",3,4.7,47.4,30.63,2.88,33.51,4
+"FD-0392","2025-07-11","West","Portland","Mexican","Chile Verde","Afternoon","Android","Plus","Rain","No",6,1.94,22.9,18.05,1.96,20.01,4
+"FD-0393","2025-07-11","South","Nashville","Mexican","Chile Verde","Afternoon","iOS","Free","Cloudy","No",4,3.19,25.9,13.87,1.66,15.53,4
+"FD-0394","2025-07-12","East","Boston","Burgers","Smash District","Dinner","Web","Free","Clear","No",4,1.95,29.4,14.62,1.95,16.57,4.5
+"FD-0395","2025-07-12","East","Boston","Mediterranean","Citrus Grill","Lunch","Android","Free","Cloudy","Yes",4,2.59,25.9,14.5,1.86,16.36,4
+"FD-0396","2025-07-13","West","Seattle","Pizza","Slice Theory","Lunch","Web","Free","Rain","No",3,4.62,35.8,16.42,1.62,18.04,4
+"FD-0397","2025-07-14","Midwest","Chicago","Mexican","Masa & Lime","Lunch","Android","Plus","Rain","No",3,2.7,27.8,16.05,2.19,18.24,4.5
+"FD-0398","2025-07-15","South","Miami","Ramen","Broth & Bone","Lunch","iOS","Free","Clear","No",3,1.79,27.5,14.04,1.65,15.69,4
+"FD-0399","2025-07-15","Midwest","Chicago","Burgers","Gold Bun","Dinner","iOS","Plus","Rain","No",2,4.32,36.3,16.5,2.57,19.07,4
+"FD-0400","2025-07-16","East","Boston","Sushi","Nori Desk","Dinner","Web","Free","Rain","No",4,3.96,45.1,24.11,1.91,26.02,3.5
+"FD-0401","2025-07-16","South","Miami","Mexican","Taco Libre","Dinner","iOS","Plus","Cloudy","No",2,4.76,46,17.35,4.17,21.52,3.5
+"FD-0402","2025-07-16","South","Austin","Sushi","Nori Desk","Dinner","iOS","Plus","Clear","Yes",6,2.96,30.7,30.02,6.82,36.84,4
+"FD-0403","2025-07-16","South","Austin","Indian","Tandoor Lane","Dinner","iOS","Plus","Clear","No",4,2.22,26.1,23.02,3.9,26.92,4
+"FD-0404","2025-07-17","West","Seattle","Ramen","Midnight Noodle","Lunch","iOS","Free","Cloudy","No",4,2.8,25.6,14.19,1.54,15.73,4.5
+"FD-0405","2025-07-22","West","Seattle","Burgers","Gold Bun","Afternoon","iOS","Plus","Rain","No",3,2.69,25.8,13.56,2.15,15.71,4
+"FD-0406","2025-07-23","East","Boston","Mexican","Taco Libre","Afternoon","Android","Plus","Clear","No",5,3.27,25.6,14.3,2.94,17.24,4.5
+"FD-0407","2025-07-23","South","Austin","Thai","Lemongrass Cart","Dinner","iOS","Free","Clear","Yes",5,3.39,36,15.84,2.57,18.41,3
+"FD-0408","2025-07-23","Midwest","Chicago","Sushi","Pacific Roll","Lunch","iOS","Free","Clear","No",3,3.54,21.2,24.49,2.42,26.91,4.5
+"FD-0409","2025-07-24","West","Denver","Mexican","Chile Verde","Dinner","Android","Plus","Clear","No",2,1.49,26.5,14.94,2.59,17.53,4
+"FD-0410","2025-07-24","West","Seattle","Mexican","Masa & Lime","Late Night","Android","Free","Cloudy","No",2,2.44,17.4,17.21,2.2,19.41,4
+"FD-0411","2025-07-24","South","Miami","Mediterranean","Citrus Grill","Dinner","iOS","Free","Cloudy","No",2,4.34,42,18.29,2.77,21.06,4
+"FD-0412","2025-07-24","South","Austin","Pizza","Late Night Pie","Late Night","Android","Pro","Clear","No",2,4.08,19.2,20.03,4.73,24.76,4
+"FD-0413","2025-07-24","West","Portland","Sushi","Omakase Express","Dinner","iOS","Plus","Rain","Yes",5,1.89,34.3,29.81,4.91,34.72,4
+"FD-0414","2025-07-26","West","Seattle","Pizza","Late Night Pie","Dinner","Android","Plus","Rain","No",4,3.79,41.5,25.33,6.07,31.4,4
+"FD-0415","2025-07-27","South","Austin","Thai","Lemongrass Cart","Afternoon","Android","Plus","Clear","No",3,2.86,23.1,14.32,3.16,17.48,4.5
+"FD-0416","2025-07-27","South","Nashville","Ramen","Broth & Bone","Lunch","Android","Plus","Cloudy","No",1,3.41,32.6,12.98,2.42,15.4,3.5
+"FD-0417","2025-07-27","East","Boston","Mediterranean","Citrus Grill","Dinner","Android","Free","Cloudy","No",3,4.48,40.4,16.66,2.29,18.95,3
+"FD-0418","2025-07-28","Midwest","Chicago","Sushi","Omakase Express","Lunch","Web","Pro","Rain","No",4,4.67,37.9,24.95,6.73,31.68,4
+"FD-0419","2025-07-28","South","Miami","Pizza","Late Night Pie","Late Night","Android","Pro","Clear","No",2,3.55,21.1,18.05,4.05,22.1,4.5
+"FD-0420","2025-07-29","South","Nashville","Burgers","Smash District","Lunch","Web","Free","Clear","Yes",2,1.9,28.9,7.95,1.28,9.23,4

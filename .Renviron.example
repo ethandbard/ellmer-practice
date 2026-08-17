@@ -1,0 +1,5 @@
+# Copy the line(s) you need into your *user* .Renviron
+# (usethis::edit_r_environ()), then restart R. No quotes.
+
+XAI_API_KEY=xai-your-key-here
+ANTHROPIC_API_KEY=sk-ant-your-key-here
