@@ -2,136 +2,85 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-08-16">
+<meta name="dcterms.date" content="2026-08-18">
 
-<title>Query &amp; model preview</title>
+<title>ellmer-practice</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-c7e68cbf4fd09285039b7e9a23f813c3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-07c25d2d476f3608a53a5c29266eafd5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<style>html{ scroll-behavior: smooth; }</style>
-<script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
-<script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
-<link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="quarto-light">
+<body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
-<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#architecture" id="toc-architecture" class="nav-link active" data-scroll-target="#architecture">Architecture</a></li>
-  <li><a href="#what-the-model-is-actually-given" id="toc-what-the-model-is-actually-given" class="nav-link" data-scroll-target="#what-the-model-is-actually-given">What the model is actually given</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
   <ul class="collapse">
-  <li><a href="#a-statistical-profile-not-rows" id="toc-a-statistical-profile-not-rows" class="nav-link" data-scroll-target="#a-statistical-profile-not-rows">A statistical profile, not rows</a></li>
-  <li><a href="#a-typed-tool-schema" id="toc-a-typed-tool-schema" class="nav-link" data-scroll-target="#a-typed-tool-schema">A typed tool schema</a></li>
-  <li><a href="#sql-it-is-allowed-to-run" id="toc-sql-it-is-allowed-to-run" class="nav-link" data-scroll-target="#sql-it-is-allowed-to-run">SQL it is allowed to run</a></li>
+  <li><a href="#one-process-one-table-many-sessions" id="toc-one-process-one-table-many-sessions" class="nav-link" data-scroll-target="#one-process-one-table-many-sessions">One process, one table, many sessions</a></li>
+  <li><a href="#two-chat-clients-one-tool-contract-each" id="toc-two-chat-clients-one-tool-contract-each" class="nav-link" data-scroll-target="#two-chat-clients-one-tool-contract-each">Two chat clients, one tool contract each</a></li>
+  <li><a href="#file-map" id="toc-file-map" class="nav-link" data-scroll-target="#file-map">File map</a></li>
   </ul></li>
-  <li><a href="#explore-one-question-three-synced-panes" id="toc-explore-one-question-three-synced-panes" class="nav-link" data-scroll-target="#explore-one-question-three-synced-panes">Explore: one question, three synced panes</a>
+  <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading data</a></li>
+  <li><a href="#how-a-question-becomes-a-chart" id="toc-how-a-question-becomes-a-chart" class="nav-link" data-scroll-target="#how-a-question-becomes-a-chart">How a question becomes a chart</a>
   <ul class="collapse">
-  <li><a href="#the-single-recipe-invariant" id="toc-the-single-recipe-invariant" class="nav-link" data-scroll-target="#the-single-recipe-invariant">The single-recipe invariant</a></li>
-  <li><a href="#asking-for-a-relationship-rather-than-a-chart-type" id="toc-asking-for-a-relationship-rather-than-a-chart-type" class="nav-link" data-scroll-target="#asking-for-a-relationship-rather-than-a-chart-type">Asking for a relationship rather than a chart type</a></li>
+  <li><a href="#the-column-profile-drives-the-prompt" id="toc-the-column-profile-drives-the-prompt" class="nav-link" data-scroll-target="#the-column-profile-drives-the-prompt">The column profile drives the prompt</a></li>
+  <li><a href="#the-set_dashboard-tool-contract" id="toc-the-set_dashboard-tool-contract" class="nav-link" data-scroll-target="#the-set_dashboard-tool-contract">The set_dashboard tool contract</a></li>
+  <li><a href="#resolving-the-plot-spec" id="toc-resolving-the-plot-spec" class="nav-link" data-scroll-target="#resolving-the-plot-spec">Resolving the plot spec</a></li>
+  <li><a href="#one-recipe-two-consumers" id="toc-one-recipe-two-consumers" class="nav-link" data-scroll-target="#one-recipe-two-consumers">One recipe, two consumers</a></li>
+  <li><a href="#style-is-sticky" id="toc-style-is-sticky" class="nav-link" data-scroll-target="#style-is-sticky">Style is sticky</a></li>
   </ul></li>
-  <li><a href="#model-preview-fits-with-a-named-baseline" id="toc-model-preview-fits-with-a-named-baseline" class="nav-link" data-scroll-target="#model-preview-fits-with-a-named-baseline">Model: preview fits with a named baseline</a>
+  <li><a href="#how-a-question-becomes-a-model" id="toc-how-a-question-becomes-a-model" class="nav-link" data-scroll-target="#how-a-question-becomes-a-model">How a question becomes a model</a>
   <ul class="collapse">
-  <li><a href="#regression-and-a-result-that-admits-it-is-weak" id="toc-regression-and-a-result-that-admits-it-is-weak" class="nav-link" data-scroll-target="#regression-and-a-result-that-admits-it-is-weak">Regression, and a result that admits it is weak</a></li>
-  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
-  <li><a href="#a-model-you-can-read-out-loud" id="toc-a-model-you-can-read-out-loud" class="nav-link" data-scroll-target="#a-model-you-can-read-out-loud">A model you can read out loud</a></li>
-  <li><a href="#unsupervised-same-tool" id="toc-unsupervised-same-tool" class="nav-link" data-scroll-target="#unsupervised-same-tool">Unsupervised, same tool</a></li>
-  <li><a href="#is-the-difference-real-is-a-first-class-question" id="toc-is-the-difference-real-is-a-first-class-question" class="nav-link" data-scroll-target="#is-the-difference-real-is-a-first-class-question">“Is the difference real?” is a first-class question</a></li>
+  <li><a href="#the-set_model-tool-contract" id="toc-the-set_model-tool-contract" class="nav-link" data-scroll-target="#the-set_model-tool-contract">The set_model tool contract</a></li>
+  <li><a href="#method-families" id="toc-method-families" class="nav-link" data-scroll-target="#method-families">Method families</a></li>
+  <li><a href="#holdout-and-cross-validation" id="toc-holdout-and-cross-validation" class="nav-link" data-scroll-target="#holdout-and-cross-validation">Holdout and cross-validation</a></li>
+  <li><a href="#two-panels-one-fit" id="toc-two-panels-one-fit" class="nav-link" data-scroll-target="#two-panels-one-fit">Two panels, one fit</a></li>
   </ul></li>
-  <li><a href="#state-sessions-and-the-provider-swap" id="toc-state-sessions-and-the-provider-swap" class="nav-link" data-scroll-target="#state-sessions-and-the-provider-swap">State, sessions, and the provider swap</a>
-  <ul class="collapse">
-  <li><a href="#the-duckdb-table-is-process-wide" id="toc-the-duckdb-table-is-process-wide" class="nav-link" data-scroll-target="#the-duckdb-table-is-process-wide">The DuckDB table is process-wide</a></li>
-  <li><a href="#querychat-gets-the-connection-not-a-data-frame" id="toc-querychat-gets-the-connection-not-a-data-frame" class="nav-link" data-scroll-target="#querychat-gets-the-connection-not-a-data-frame"><code>querychat</code> gets the connection, not a data frame</a></li>
-  <li><a href="#swapping-providers-mid-session" id="toc-swapping-providers-mid-session" class="nav-link" data-scroll-target="#swapping-providers-mid-session">Swapping providers mid-session</a></li>
-  </ul></li>
-  <li><a href="#the-code" id="toc-the-code" class="nav-link" data-scroll-target="#the-code">The code</a></li>
-  <li><a href="#run-it" id="toc-run-it" class="nav-link" data-scroll-target="#run-it">Run it</a></li>
-  <li><a href="#limits" id="toc-limits" class="nav-link" data-scroll-target="#limits">Limits</a></li>
+  <li><a href="#switching-language-model-providers" id="toc-switching-language-model-providers" class="nav-link" data-scroll-target="#switching-language-model-providers">Switching language model providers</a></li>
+  <li><a href="#known-limitations" id="toc-known-limitations" class="nav-link" data-scroll-target="#known-limitations">Known limitations</a></li>
+  <li><a href="#run-the-app" id="toc-run-the-app" class="nav-link" data-scroll-target="#run-the-app">Run the app</a></li>
   </ul>
 </nav>
-</div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Query &amp; model preview</h1>
-<p class="subtitle lead">A Shiny workbench where an LLM writes SQL and model specs, R executes them, and every intermediate is on screen. A technical walkthrough.</p>
+<h1 class="title">ellmer-practice</h1>
+<p class="subtitle lead">How a Shiny workbench turns English questions into SQL, ggplot2 charts, and tidymodels fits</p>
 </div>
 
 
@@ -142,929 +91,494 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 16, 2026</p>
+      <p class="date">August 18, 2026</p>
     </div>
   </div>
-  
     
   </div>
   
 
-
 </header>
 
-
-<div class="hero">
-<div class="hero-lede">
-<p>The model does not analyze your data. It emits a <strong>typed tool call</strong> — SQL plus a plot or model spec — and R does everything after that.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>ellmer-practice is a two-page Shiny app. Each page pairs a chat panel with a live preview: type a question in English, and the app turns it into a SQL query, a model fit, or both. It then redraws the chart and the code pane beside it.</p>
+<ul>
+<li><strong>Explore</strong> answers questions with SQL against a DuckDB table and draws a ggplot2 chart from the result.</li>
+<li><strong>Model</strong> fits a small regression, classification, forecast, statistical test, or unsupervised model on the same table and draws its diagnostics.</li>
+</ul>
+<p>The chat model never sees raw rows. It sees a statistical profile of the loaded table — each column’s role, range, and missingness — and calls one typed tool per question. R runs the SQL or fits the model, and every session watches the same DuckDB table.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/explore-bar-chart.jpg" class="img-fluid figure-img" style="width:95.0%" alt="Screenshot of the Explore page showing a bar chart of average college-educated adults by state, a chat panel on the left, and SQL and ggplot2 code panels on the right."></p>
+<p></p><figcaption class="figure-caption">The Explore page after a question. Chat on the left, the featured chart in the center, and the SQL and ggplot2 code that produced it on the right.</figcaption><p></p>
+</figure>
 </div>
-<p>That split is the whole design. The LLM’s output is a structured argument object validated against a schema, not prose and not code that gets <code>eval()</code>ed.&nbsp;R owns execution, the database, the rendering, and the statistics. What reaches the model afterwards is the result R computed.</p>
-<p>Every screenshot below is a live session against <code>midwest</code> — 437 Midwestern counties, 28 columns, from <code>ggplot2</code>. Nothing in the app was tuned for it.</p>
-<div class="hero-meta">
-<p><span>R + Shiny</span> <span>ellmer</span> <span>querychat</span> <span>DuckDB</span> <span>tidymodels</span> <span>ggplot2</span> <span>Claude Haiku 4.5</span></p>
-</div>
-</div>
+</section>
 <section id="architecture" class="level2">
 <h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
-<p>One turn is one tool call. There is no agent loop, no multi-step planning, and no path by which the model reaches the database directly.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-  subgraph LLM["Model — Anthropic or xAI"]
-    T["Emits one typed tool call&lt;br/&gt;&lt;b&gt;set_dashboard&lt;/b&gt; or &lt;b&gt;set_model&lt;/b&gt;"]
-  end
-  subgraph RS["R — Shiny process"]
-    G["&lt;b&gt;is_read_only_sql()&lt;/b&gt;&lt;br/&gt;reject non-SELECT"]
-    D[("DuckDB&lt;br/&gt;table &lt;b&gt;data&lt;/b&gt;")]
-    RC["Plot recipe /&lt;br/&gt;tidymodels workflow"]
-    P["Panes: chart · SQL · code"]
-    S["Result summary&lt;br/&gt;+ profile"]
-  end
-  Q["Your question"] --&gt; T
-  T --&gt; G
-  G --&gt;|"SELECT / WITH only"| D
-  D --&gt; RC
-  RC --&gt; P
-  RC --&gt; S
-  S --&gt;|"numbers R computed"| T
-  G -.-&gt;|"rejected: error text&lt;br/&gt;names allowed columns"| T
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>The dotted edge matters as much as the solid ones: a failed query returns a message naming the legal columns and asking for a retry, so a hallucinated column name becomes a self-correcting round trip rather than a broken pane.</p>
+<section id="one-process-one-table-many-sessions" class="level3">
+<h3 class="anchored" data-anchor-id="one-process-one-table-many-sessions">One process, one table, many sessions</h3>
+<p><code>app.R</code> opens a single file-backed DuckDB connection (<code>dash_con</code>) when the Shiny process starts, and writes the starter dataset into a table named <code>data</code>. Every browser session shares that connection. Loading a new dataset — a built-in source, an upload, or a file dropped into <code>data/</code> — overwrites table <code>data</code> for the whole process, not just the current tab.</p>
+<p>A module-level object, <code>current_source</code>, tracks the label, column names, row count, and preview of whatever is currently in table <code>data</code>. Each new session reads <code>current_source</code> at startup instead of the original starter dataset. A second tab, or a reload of the same tab, shows what an earlier session loaded rather than resetting to the original CSV.</p>
 </section>
-<section id="what-the-model-is-actually-given" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-model-is-actually-given">What the model is actually given</h2>
-<section id="a-statistical-profile-not-rows" class="level3">
-<h3 class="anchored" data-anchor-id="a-statistical-profile-not-rows">A statistical profile, not rows</h3>
-<p>By default the chat client never receives the table contents. On load, R profiles every column and writes that profile into the system prompt. A <code>describe_data</code> tool lets the model re-read it on demand.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/profile-greeting.jpg" alt="The session opening on <code>midwest</code>: 437 rows, 28 columns, and the full column list — the model's entire view of the table before it asks anything." class="figure-img"><figcaption>The session opening on <code>midwest</code>: 437 rows, 28 columns, and the full column list — the model's entire view of the table before it asks anything.</figcaption></figure>
-</div>
-</div>
-<p>Roles are inferred from <strong>statistics</strong>, with column names used only as a small tiebreak. From <code>R/profile.R</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>profile_roles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"measure"</span>, <span class="st">"count"</span>, <span class="st">"category"</span>, <span class="st">"clock"</span>, <span class="st">"id"</span>, <span class="st">"text"</span>, <span class="st">"constant"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The classifier reads cardinality, type, integer-ness, sign, and missingness. A few of the rules that make it survive unfamiliar tables:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (d <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="fu">return</span>(<span class="st">"constant"</span>)                      <span class="co"># single distinct value</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">isTRUE</span>(row<span class="sc">$</span>parsed_clock)) <span class="fu">return</span>(<span class="st">"clock"</span>)       <span class="co"># parses as a date</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># character/factor with a small, stable set of levels</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ((<span class="fu">is.character</span>(x) <span class="sc">||</span> <span class="fu">is.factor</span>(x)) <span class="sc">&amp;&amp;</span> d <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;&amp;</span> d <span class="sc">&lt;=</span> <span class="dv">20</span>) <span class="fu">return</span>(<span class="st">"category"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># count-named non-negative integers beat the small-integer category rule:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># food_delivery$items is 1-8 and is a count, not a grouping</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(x) <span class="sc">&amp;&amp;</span> <span class="fu">isTRUE</span>(row<span class="sc">$</span>is_integerish) <span class="sc">&amp;&amp;</span> <span class="fu">isTRUE</span>(row<span class="sc">$</span>all_nonneg) <span class="sc">&amp;&amp;</span> count_name) {</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... unless it is a 1-10 rating/score, which is a measure</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">"count"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric encodings of categories: cyl, gear, carb</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">isTRUE</span>(row<span class="sc">$</span>is_integerish) <span class="sc">&amp;&amp;</span> <span class="sc">!</span>yearish <span class="sc">&amp;&amp;</span> d <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;&amp;</span> d <span class="sc">&lt;=</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> ratio <span class="sc">&lt;</span> <span class="fl">0.15</span>) {</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">"category"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Integer years are explicitly <em>not</em> treated as a clock, and a 1–10 column named <code>rating</code> is a measure rather than a count. These are the cases that break name-matching schemas.</p>
-<p>The same profile feeds four consumers — the system prompt, <code>auto_view()</code> (the default chart), <code>auto_features()</code> (default model predictors), and the <code>describe_data</code> tool — so the app’s automatic choices and the model’s suggestions are derived from one description of the data.</p>
-</section>
-<section id="a-typed-tool-schema" class="level3">
-<h3 class="anchored" data-anchor-id="a-typed-tool-schema">A typed tool schema</h3>
-<p><code>set_dashboard</code> is an <code>ellmer</code> schema, not a prompt convention. Every field is optional and enum-constrained where possible, and the enums are generated from the same registries the renderer uses — adding a theme is one list entry, not a second schema edit.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot_spec_type <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  ellmer<span class="sc">::</span><span class="fu">type_object</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.description =</span> <span class="st">"What to show. Data mapping for the featured ggplot."</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">from   =</span> <span class="fu">opt_enum</span>(<span class="fu">c</span>(<span class="st">"detail"</span>, <span class="st">"aggregate"</span>, <span class="st">"auto"</span>), <span class="st">"Which SQL result to plot."</span>),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom   =</span> <span class="fu">opt_enum</span>(<span class="fu">c</span>(allowed_geoms, <span class="st">"auto"</span>), <span class="st">"ggplot geom. bar is accepted as col."</span>),</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x      =</span> <span class="fu">opt_string</span>(<span class="st">"Column for x, from the chosen SQL result."</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y      =</span> <span class="fu">opt_string</span>(<span class="st">"Column for y. Omit for histogram/density."</span>),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color  =</span> <span class="fu">opt_string</span>(<span class="st">"Optional color/fill column."</span>),</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">facet  =</span> <span class="fu">opt_string</span>(<span class="st">"Facet wrap column, or the grid's row variable."</span>),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">smooth =</span> <span class="fu">opt_enum</span>(<span class="fu">c</span>(<span class="st">"none"</span>, <span class="st">"lm"</span>, <span class="st">"loess"</span>), <span class="st">"Add a smooth to point/jitter charts."</span>),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ... sort, position, titles, annotations, reference lines, bounds</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">.required =</span> <span class="cn">FALSE</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The geom enum is closed:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>allowed_geoms <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"col"</span>, <span class="st">"line"</span>, <span class="st">"point"</span>, <span class="st">"histogram"</span>, <span class="st">"boxplot"</span>, <span class="st">"density"</span>, <span class="st">"area"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"violin"</span>, <span class="st">"jitter"</span>, <span class="st">"tile"</span>, <span class="st">"hex"</span>, <span class="st">"bin2d"</span>, <span class="st">"ecdf"</span>, <span class="st">"qq"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"errorbar"</span>, <span class="st">"pointrange"</span>, <span class="st">"step"</span>, <span class="st">"ribbon"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Style is a separate, sticky channel.</strong> <code>style_spec_type()</code> carries theme, palette, accent, highlight, legend position, scale transforms, number formats and label sizes. Merge semantics are partial-update: only the fields sent are overwritten, and they persist until reset.</p>
-<p>That is what makes <em>“now make it dark”</em> a one-field call. The model omits both SQL strings and the entire plot mapping; R reuses the last result set and re-renders. From <code>app.R</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reused <span class="ot">&lt;-</span> <span class="fu">reuse_last_queries</span>(detail, agg, <span class="fu">list</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">detail_df     =</span> <span class="fu">isolate</span>(dash<span class="sc">$</span>detail_df),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">aggregate_df  =</span> <span class="fu">isolate</span>(dash<span class="sc">$</span>aggregate_df),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">detail_sql    =</span> <span class="fu">isolate</span>(dash<span class="sc">$</span>detail_sql),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">aggregate_sql =</span> <span class="fu">isolate</span>(dash<span class="sc">$</span>aggregate_sql)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>detail<span class="sc">$</span>used <span class="sc">&amp;&amp;</span> <span class="sc">!</span>agg<span class="sc">$</span>used) {</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">"No chart to restyle yet. Ask a data question first, or provide SQL."</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="sql-it-is-allowed-to-run" class="level3">
-<h3 class="anchored" data-anchor-id="sql-it-is-allowed-to-run">SQL it is allowed to run</h3>
-<p>Model-authored SQL is gated before it reaches DuckDB. The interesting part is the order of operations — comments and string literals are stripped <em>first</em>, so <code>WHERE note = 'create'</code> is a legal read rather than a false positive:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>strip_sql_noise <span class="ot">&lt;-</span> <span class="cf">function</span>(sql) {</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  stripped <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"--[^</span><span class="sc">\\</span><span class="st">n]*"</span>, <span class="st">" "</span>, sql)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  stripped <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"/</span><span class="sc">\\</span><span class="st">*.*?</span><span class="sc">\\</span><span class="st">*/"</span>, <span class="st">" "</span>, stripped)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  stripped <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"'([^']|'')*'"</span>, <span class="st">"''"</span>, stripped)   <span class="co"># single-quoted literals</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  stripped <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'"([^"]|"")*"'</span>, <span class="st">'""'</span>, stripped)   <span class="co"># double-quoted identifiers</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">trimws</span>(stripped)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>is_read_only_sql <span class="ot">&lt;-</span> <span class="cf">function</span>(sql) {</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  stripped <span class="ot">&lt;-</span> <span class="fu">strip_sql_noise</span>(sql)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"^(with|select)</span><span class="sc">\\</span><span class="st">b"</span>, stripped, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a second statement after a SELECT: `SELECT 1; DROP TABLE data`</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  rest <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"^(with|select)</span><span class="sc">\\</span><span class="st">b"</span>, <span class="st">""</span>, stripped, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">grepl</span>(<span class="st">";"</span>, rest)) <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">b(insert|update|delete|drop|alter|create|attach|copy|pragma|grant|truncate)</span><span class="sc">\\</span><span class="st">b"</span>,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>         stripped, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A source comment records why this is a keyword gate rather than a read-only connection: on Windows, DuckDB cannot <code>ATTACH</code> the same file while a writer is open, and an in-process <code>read_only = TRUE</code> handle still accepted <code>DROP</code> in testing.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="explore-one-question-three-synced-panes" class="level2">
-<h2 class="anchored" data-anchor-id="explore-one-question-three-synced-panes">Explore: one question, three synced panes</h2>
-<p>The Explore page opens with a chart nobody asked for — <code>auto_view()</code> picks it from the profile, so the page is never empty and the model has something to describe.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/explore-load.jpg" alt="<code>midwest</code> on load. <code>auto_view()</code> chose popdensity against area colored by state; the SQL and ggplot2 panes are already populated. Chat left, chart centre, code right — the split is drag-resizable." class="figure-img"><figcaption><code>midwest</code> on load. <code>auto_view()</code> chose popdensity against area colored by state; the SQL and ggplot2 panes are already populated. Chat left, chart centre, code right — the split is drag-resizable.</figcaption></figure>
-</div>
-</div>
-<p>Then a question. <em>“Update the dashboard: average percent college-educated by state, as a bar chart”</em> fires exactly one <code>set_dashboard</code> call:</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/explore-bar.jpg" alt="One tool call rewrites every pane. The chat answer quotes WI 20.02%, MI 19.42%, IL 18.79% — the same numbers you can read off the bars, because both came from the same result set." class="figure-img"><figcaption>One tool call rewrites every pane. The chat answer quotes WI 20.02%, MI 19.42%, IL 18.79% — the same numbers you can read off the bars, because both came from the same result set.</figcaption></figure>
-</div>
-</div>
-<p>Nothing mapped “college-educated” to a column by hand. <code>percollege</code> was found in the profile.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/tool-call.jpg" alt="The transcript showing the <code>SET_DASHBOARD()</code> call itself. Expanding it reveals the exact arguments the model emitted." class="figure-img"><figcaption>The transcript showing the <code>SET_DASHBOARD()</code> call itself. Expanding it reveals the exact arguments the model emitted.</figcaption></figure>
-</div>
-</div>
-<section id="the-single-recipe-invariant" class="level3">
-<h3 class="anchored" data-anchor-id="the-single-recipe-invariant">The single-recipe invariant</h3>
-<p>This is the claim worth being precise about. The chart pane and the code pane are not generated independently — they are two renderings of one plot recipe. The code on screen is the code that ran.</p>
-<div class="panes">
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/pane-chart.jpg" alt="The rendered chart." class="figure-img"><figcaption>The rendered chart.</figcaption></figure>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/pane-sql.jpg" alt="Pane 1 — the SQL the model wrote, formatted by <code>format_sql()</code>." class="figure-img"><figcaption>Pane 1 — the SQL the model wrote, formatted by <code>format_sql()</code>.</figcaption></figure>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/pane-ggplot.jpg" alt="Pane 2 — the ggplot2 call generated from the same recipe that drew the chart above." class="figure-img"><figcaption>Pane 2 — the ggplot2 call generated from the same recipe that drew the chart above.</figcaption></figure>
-</div>
-</div>
-</div>
-<p>The SQL is the model’s, reformatted for reading:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  state,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">AVG</span>(percollege) <span class="kw">AS</span> avg_college_percent</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="kw">data</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> state</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> avg_college_percent <span class="kw">DESC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The ggplot2 pane is generated, not transcribed — paste it into a script and you get the same figure back:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(aggregate, <span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> avg_college_percent, <span class="at">fill =</span> state)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average College-Educated Adults by State"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"State"</span>, <span class="at">y =</span> <span class="st">"Average % College-Educated"</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span>)) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The palette is Okabe–Ito. That is the default, not a request.</p>
-</section>
-<section id="asking-for-a-relationship-rather-than-a-chart-type" class="level3">
-<h3 class="anchored" data-anchor-id="asking-for-a-relationship-rather-than-a-chart-type">Asking for a relationship rather than a chart type</h3>
-<p><em>“Scatter of percent college-educated vs percent below poverty, colored by state, with a linear smooth”</em> — one sentence, three schema fields (<code>geom = "point"</code>, <code>color = "state"</code>, <code>smooth = "lm"</code>).</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/scatter-smooth.jpg" alt="<code>geom_point()</code> + <code>geom_smooth(method = &quot;lm&quot;)</code> fit per state. More college-educated adults, less poverty — a negative slope in all five states, and the per-state fits differ enough to be worth noticing." class="figure-img"><figcaption><code>geom_point()</code> + <code>geom_smooth(method = "lm")</code> fit per state. More college-educated adults, less poverty — a negative slope in all five states, and the per-state fits differ enough to be worth noticing.</figcaption></figure>
-</div>
-</div>
-<p>Because style is sticky, the Okabe–Ito palette and theme carried over from the previous question without being restated. Flipping <strong>Interactive (Plotly)</strong> in the sidebar renders the same recipe through <code>plotly</code> with hover and zoom.</p>
-</section>
-</section>
-<section id="model-preview-fits-with-a-named-baseline" class="level2">
-<h2 class="anchored" data-anchor-id="model-preview-fits-with-a-named-baseline">Model: preview fits with a named baseline</h2>
-<p>The Model page fits a small <code>tidymodels</code> workflow and reports holdout metrics <strong>against a named baseline</strong>. The baseline is the point — a metric without one is not interpretable, and this app refuses to show one alone.</p>
-<p><code>set_model</code> accepts these methods:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>allowed_ml_methods <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"regression"</span>, <span class="st">"classification"</span>, <span class="st">"forecast"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"poisson"</span>, <span class="st">"tree"</span>, <span class="st">"forest"</span>, <span class="st">"ridge"</span>, <span class="st">"elastic"</span>, <span class="st">"gam"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"test"</span>, <span class="st">"pca"</span>, <span class="st">"kmeans"</span>, <span class="st">"correlation"</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and these diagnostic plots:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>allowed_ml_plots <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"coef"</span>, <span class="st">"actual_pred"</span>, <span class="st">"residual"</span>, <span class="st">"forecast"</span>, <span class="st">"cv"</span>, <span class="st">"subgroup"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"roc"</span>, <span class="st">"pr"</span>, <span class="st">"confusion"</span>, <span class="st">"calibration"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tree"</span>, <span class="st">"importance"</span>, <span class="st">"pdp"</span>, <span class="st">"path"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"scree"</span>, <span class="st">"biplot"</span>, <span class="st">"cluster"</span>, <span class="st">"elbow"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"heatmap"</span>, <span class="st">"stl"</span>, <span class="st">"test"</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Method names are aliased (<code>lm</code>, <code>linear</code>, <code>ols</code>, <code>regress</code> → <code>regression</code>; <code>glm</code>, <code>logistic</code> → <code>classification</code>), so the model does not have to guess the canonical token.</p>
-<section id="regression-and-a-result-that-admits-it-is-weak" class="level3">
-<h3 class="anchored" data-anchor-id="regression-and-a-result-that-admits-it-is-weak">Regression, and a result that admits it is weak</h3>
-<p><em>“Predict percent below poverty from percent college-educated, population density, and metro status.”</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/model-regression.jpg" alt="Fit plot and coefficient estimates on the left; the model spec and the generated R on the right. The spec pane reports the split, the holdout metrics, and the baseline together." class="figure-img"><figcaption>Fit plot and coefficient estimates on the left; the model spec and the generated R on the right. The spec pane reports the split, the holdout metrics, and the baseline together.</figcaption></figure>
-</div>
-</div>
-<p>The spec pane reads:</p>
-<pre><code>method    regression
-target    percbelowpoverty
-features  percollege, popdensity, inmetro
-n         437
-split     random 80/20 holdout (seed 1) · train 350 / test 87
-
-Holdout
-rmse      4.567
-mae       3.617
-mape      32.9%
-r2        -0.001
-baseline  4.579 RMSE (train mean)</code></pre>
-<p>RMSE 4.567 against a train-mean baseline of 4.579, and R² ≈ 0. <strong>The model barely beats guessing the average, and the pane says so.</strong> Reported alone, R² near zero would look like a bug; next to a baseline it reads correctly as a weak predictor.</p>
-<p>The coefficients are still real and still interpretable: each additional percentage point of college attainment is associated with about <strong>0.22 points less poverty</strong> (p &lt; 0.001), and metro counties run <strong>2.6 points lower</strong> than rural ones. Modest predictive power and genuine associations are not the same claim, and separating them is exactly what the baseline buys you.</p>
-<p>Cross-validation runs on training folds only. The R pane prints the actual call:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>frame <span class="ot">&lt;-</span> data</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 80/20 split -&gt; train, test</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(percbelowpoverty <span class="sc">~</span> percollege <span class="sc">+</span> popdensity <span class="sc">+</span> inmetro, <span class="at">data =</span> train) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>())</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>wf   <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span> <span class="fu">add_recipe</span>(rec) <span class="sc">|&gt;</span> <span class="fu">add_model</span>(spec)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>fit  <span class="ot">&lt;-</span> <span class="fu">fit</span>(wf, <span class="at">data =</span> train)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">new_data =</span> test)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(<span class="fu">extract_fit_parsnip</span>(fit), <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="classification" class="level3">
-<h3 class="anchored" data-anchor-id="classification">Classification</h3>
-<p><em>“Classify whether a county is in a metro area, and show the ROC curve.”</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/classification-metrics.jpg" alt="Logistic GLM via parsnip. Accuracy 0.875 against a 0.669 always-negative baseline, AUC 0.937, log-loss 0.321 — and the positive class stated explicitly as <code>1 vs 0</code>." class="figure-img"><figcaption>Logistic GLM via parsnip. Accuracy 0.875 against a 0.669 always-negative baseline, AUC 0.937, log-loss 0.321 — and the positive class stated explicitly as <code>1 vs 0</code>.</figcaption></figure>
-</div>
-</div>
-<p>Accuracy alone would be misleading here: the classes are unbalanced enough that always guessing non-metro scores 0.669. The gap from 0.669 to 0.875, plus AUC 0.937 and cross-validated AUC 0.933 ± 0.005 on the training folds, is the real result.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/roc-curve.jpg" alt="The ROC pane for the fit above. See the note below — this curve is drawn inverted relative to the reported AUC." class="figure-img"><figcaption>The ROC pane for the fit above. See the note below — this curve is drawn inverted relative to the reported AUC.</figcaption></figure>
-</div>
-</div>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Known issue: the ROC curve is drawn with the positive class flipped
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The fit reports AUC <strong>0.937</strong>, but the plotted curve falls below the diagonal — an area of roughly 0.063, which is 1 − 0.937. The metric is computed against <code>positive 1 vs 0</code>; the curve is being traced against the other class. The numbers in the metrics pane are correct, and the diagnostic plot is not. Left visible here because it is a good illustration of why the app prints its metrics and its call next to every figure — the disagreement is detectable precisely because both are on screen.</p>
-</div>
-</div>
-</section>
-<section id="a-model-you-can-read-out-loud" class="level3">
-<h3 class="anchored" data-anchor-id="a-model-you-can-read-out-loud">A model you can read out loud</h3>
-<p><em>“Show me a decision tree for metro status.”</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/decision-tree.jpg" alt="An <code>rpart</code> tree, depth-capped at 4 so the preview stays legible. Population density splits first (importance 75.4), then poverty rate." class="figure-img"><figcaption>An <code>rpart</code> tree, depth-capped at 4 so the preview stays legible. Population density splits first (importance 75.4), then poverty rate.</figcaption></figure>
-</div>
-</div>
-<p>CV accuracy 0.868 against the logistic model’s 0.875; CV AUC 0.864 against 0.937. The tree is slightly worse and dramatically easier to explain — and because both fits report the same metrics, the size of that trade is visible rather than asserted.</p>
-</section>
-<section id="unsupervised-same-tool" class="level3">
-<h3 class="anchored" data-anchor-id="unsupervised-same-tool">Unsupervised, same tool</h3>
-<p><em>“Cluster the counties on their numeric columns.”</em> — 25 numeric columns, k chosen by the model at 3, projected onto the first two principal components.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/kmeans-pca.jpg" alt="k-means on the first two PCs. One dense cluster of small rural counties, a broad middle, and a single far outlier — Cook County, IL." class="figure-img"><figcaption>k-means on the first two PCs. One dense cluster of small rural counties, a broad middle, and a single far outlier — Cook County, IL.</figcaption></figure>
-</div>
-</div>
-<p>PCA, k-means and the correlation heatmap all route through <code>set_model</code>. When a view has no coefficient table, the estimates pane says so rather than rendering an empty chart.</p>
-</section>
-<section id="is-the-difference-real-is-a-first-class-question" class="level3">
-<h3 class="anchored" data-anchor-id="is-the-difference-real-is-a-first-class-question">“Is the difference real?” is a first-class question</h3>
-<p>Significance questions dispatch to a test rather than a predictor. The choice among t-test, ANOVA, chi-square and correlation comes from the column roles in the profile.</p>
-<div class="cell">
-<div class="cell-output-display">
-<figure class="shot figure"><img src="images/correlation-test.jpg" alt="<code>Pearson cor.test</code> on the full sample: estimate −0.311, 95% CI [−0.394, −0.224], p < 0.001 — with the caveat printed by R, not written by the model." class="figure-img"><figcaption><code>Pearson cor.test</code> on the full sample: estimate −0.311, 95% CI [−0.394, −0.224], p &lt; 0.001 — with the caveat printed by R, not written by the model.</figcaption></figure>
-</div>
-</div>
-<p>Metro counties run roughly 3–4 percentage points lower on poverty and zero is nowhere near the interval. The result pane carries its own caveat — <em>correlation is an association, not a cause</em> — emitted by R as part of the test output, so it cannot be omitted by a model in a hurry.</p>
-</section>
-</section>
-<section id="state-sessions-and-the-provider-swap" class="level2">
-<h2 class="anchored" data-anchor-id="state-sessions-and-the-provider-swap">State, sessions, and the provider swap</h2>
-<p>Three implementation details that are easy to get wrong and are worth reading the source for.</p>
-<section id="the-duckdb-table-is-process-wide" class="level3">
-<h3 class="anchored" data-anchor-id="the-duckdb-table-is-process-wide">The DuckDB table is process-wide</h3>
-<p>There is one table named <code>data</code> for the whole Shiny process. A session’s <code>reactiveValues</code> used to be seeded with the boot-time starter table regardless of what a previous session had loaded — so a reload would claim <code>orders.csv</code> while the real table held something else. The fix is a single process-level source of truth that every session reads at start:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>current_source <span class="ot">&lt;-</span> <span class="fu">local</span>({</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  env <span class="ot">&lt;-</span> <span class="fu">new.env</span>(<span class="at">parent =</span> <span class="fu">emptyenv</span>())</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>label   <span class="ot">&lt;-</span> <span class="st">"orders.csv"</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>columns <span class="ot">&lt;-</span> <span class="fu">names</span>(starter)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>n       <span class="ot">&lt;-</span> <span class="fu">nrow</span>(starter)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  env<span class="sc">$</span>preview <span class="ot">&lt;-</span> starter</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  env</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>apply_loaded_table()</code> updates it on every load; each new session calls that function against it rather than against the starter.</p>
-</section>
-<section id="querychat-gets-the-connection-not-a-data-frame" class="level3">
-<h3 class="anchored" data-anchor-id="querychat-gets-the-connection-not-a-data-frame"><code>querychat</code> gets the connection, not a data frame</h3>
-<p>Passing a data frame to <code>QueryChat$new()</code> wraps it in a <code>DataFrameSource</code> that freezes rows at construction. Since each session clones its chat client once at startup, that snapshot would go stale on the next upload. Passing the live connection builds a <code>DBISource</code> whose query tool re-reads the table on every call:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>qc <span class="ot">&lt;-</span> QueryChat<span class="sc">$</span><span class="fu">new</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dash_con,                    <span class="co"># live connection, not a snapshot</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">table_name =</span> <span class="st">"data"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">client =</span> client,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">tools =</span> <span class="st">"query"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">greeting =</span> <span class="st">"greeting.md"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">extra_instructions =</span> <span class="fu">build_analyst_prompt</span>(<span class="fu">names</span>(starter), <span class="fu">nrow</span>(starter),</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"orders.csv"</span>, <span class="at">df =</span> starter)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="swapping-providers-mid-session" class="level3">
-<h3 class="anchored" data-anchor-id="swapping-providers-mid-session">Swapping providers mid-session</h3>
-<p>The sidebar switches between the Anthropic and xAI APIs without rebuilding the querychat module, by replacing the provider inside the live <code>Chat</code> object. This reaches into <code>ellmer</code> internals and is version-guarded accordingly:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>attach_chat_provider <span class="ot">&lt;-</span> <span class="cf">function</span>(live_chat, new_chat) {</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">ellmer_supported</span>(<span class="st">"0.4.2"</span>)) {</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">"ellmer &lt; 0.4.2: in-place provider swap is unsupported."</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    live_chat<span class="sc">$</span>.__enclos_env__<span class="sc">$</span>private<span class="sc">$</span>provider <span class="ot">&lt;-</span> new_chat<span class="sc">$</span><span class="fu">get_provider</span>()</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    live_chat<span class="sc">$</span><span class="fu">set_turns</span>(<span class="fu">list</span>())</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">FALSE</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If the swap fails the user gets a notification telling them to restart, rather than a silent fallback to the old model.</p>
-<table class="caption-top table">
+<section id="two-chat-clients-one-tool-contract-each" class="level3">
+<h3 class="anchored" data-anchor-id="two-chat-clients-one-tool-contract-each">Two chat clients, one tool contract each</h3>
+<p><code>app.R</code> creates two <a href="https://github.com/posit-dev/querychat">querychat</a> instances, <code>qc</code> (Explore) and <code>qc_ml</code> (Model), each wrapping its own <code>ellmer</code> chat client. Both point at the same DuckDB connection, so their built-in <code>query</code> tool can run read-only SQL directly. <code>app.R</code> then registers additional tools on each client’s underlying chat object:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Provider</th>
-<th>Models in the picker</th>
+<th>Tool</th>
+<th>Registered on</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Anthropic (Claude)</td>
-<td>Haiku 4.5 (default), Sonnet 4.6, Sonnet 5</td>
+<td><code>set_dashboard</code></td>
+<td>Explore</td>
+<td>Run up to two SQL queries and redraw the featured chart.</td>
 </tr>
 <tr class="even">
-<td>xAI (Grok)</td>
-<td>Grok 4.5 (default), Grok 4.6, Grok 4.3</td>
+<td><code>describe_current_chart</code></td>
+<td>Explore</td>
+<td>Describe the chart already on screen without changing it.</td>
+</tr>
+<tr class="odd">
+<td><code>describe_data</code></td>
+<td>Explore, Model</td>
+<td>Return the column profile of the loaded table.</td>
+</tr>
+<tr class="even">
+<td><code>set_model</code></td>
+<td>Model</td>
+<td>Fit a model and redraw the Model page.</td>
+</tr>
+<tr class="odd">
+<td><code>describe_current_model</code></td>
+<td>Model</td>
+<td>Describe the model already on screen without refitting.</td>
 </tr>
 </tbody>
 </table>
-<p>Everything shown on this page ran on <strong>Claude Haiku 4.5</strong>. This bills the developer API, not a Claude.ai or grok.com subscription.</p>
+<p>Each tool’s arguments are typed with <code>ellmer::type_*()</code> calls in <a href="../R/tools.R">R/tools.R</a>. The model can only send fields the app knows how to interpret. Enum fields — geoms, themes, palettes, model methods — are built from the same registries the renderer uses. Adding a theme or a geom is one list entry, not a schema edit and a separate renderer edit.</p>
 </section>
-</section>
-<section id="the-code" class="level2">
-<h2 class="anchored" data-anchor-id="the-code">The code</h2>
-<p>About 250 KB of R across a dozen files. The chat layer is the thin part.</p>
-<table class="caption-top table">
+<section id="file-map" class="level3">
+<h3 class="anchored" data-anchor-id="file-map">File map</h3>
+<table class="table">
 <colgroup>
-<col style="width: 30%">
-<col style="width: 40%">
-<col style="width: 30%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>File</th>
-<th style="text-align: right;">Lines</th>
 <th>Role</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>R/model-view.R</code></td>
-<td style="text-align: right;">1938</td>
-<td>Method/plot dispatch, spec formatting, metric reporting</td>
-</tr>
-<tr class="even">
-<td><code>R/dashboard-view.R</code></td>
-<td style="text-align: right;">899</td>
-<td>Geom registry, spec resolution, auto-view</td>
-</tr>
-<tr class="odd">
-<td><code>R/model-recipe.R</code></td>
-<td style="text-align: right;">782</td>
-<td>Model plot recipes</td>
-</tr>
-<tr class="even">
-<td><code>R/plot-recipe.R</code></td>
-<td style="text-align: right;">766</td>
-<td>One recipe → chart pane and code pane</td>
-</tr>
-<tr class="odd">
-<td><code>R/tools.R</code></td>
-<td style="text-align: right;">459</td>
-<td>Typed tool schemas, sticky style merge</td>
+<td><code>app.R</code></td>
+<td>Shiny UI, server, data loading, and tool registration.</td>
 </tr>
 <tr class="even">
 <td><code>R/profile.R</code></td>
-<td style="text-align: right;">451</td>
-<td>Column roles inferred from statistics</td>
+<td>Column profiler: infers a role (measure, count, category, clock, id, text, constant) for every column from its statistics.</td>
 </tr>
 <tr class="odd">
-<td><code>R/model-tidymodels.R</code></td>
-<td style="text-align: right;">360</td>
-<td>parsnip / recipes / workflows / yardstick</td>
-</tr>
-<tr class="even">
-<td><code>R/stats-test.R</code></td>
-<td style="text-align: right;">206</td>
-<td>t-test, ANOVA, chi-square, correlation</td>
-</tr>
-<tr class="odd">
-<td><code>R/unsupervised.R</code></td>
-<td style="text-align: right;">155</td>
-<td>PCA, k-means, correlation heatmap</td>
-</tr>
-<tr class="even">
 <td><code>R/sql.R</code></td>
-<td style="text-align: right;">156</td>
-<td>DuckDB helpers and the read-only gate</td>
+<td>Runs read-only SQL, auto-picks a starting chart from a table’s profile, and holds the plot-spec vocabulary (geoms, sort keys, label formats).</td>
+</tr>
+<tr class="even">
+<td><code>R/plot-recipe.R</code></td>
+<td>Turns a resolved plot spec into a ggplot2 recipe: a list of unevaluated layer expressions shared by the renderer and the code pane.</td>
+</tr>
+<tr class="odd">
+<td><code>R/theme.R</code></td>
+<td>Theme and palette registries for the featured chart.</td>
+</tr>
+<tr class="even">
+<td><code>R/dashboard-view.R</code></td>
+<td>Wires the Explore page’s SQL results to a plot recipe and formats the tool’s return text.</td>
+</tr>
+<tr class="odd">
+<td><code>R/tools.R</code></td>
+<td>Typed tool schemas, sticky style merging, and tool-return formatting shared by both pages.</td>
+</tr>
+<tr class="even">
+<td><code>R/model-tidymodels.R</code></td>
+<td>tidymodels helpers: workflow builders, prediction, coefficient tidying, partial dependence, tree layout.</td>
+</tr>
+<tr class="odd">
+<td><code>R/model-recipe.R</code></td>
+<td>Model-page plot recipes (one per <code>plot</code> key) and the R code shown in the code pane.</td>
+</tr>
+<tr class="even">
+<td><code>R/model-view.R</code></td>
+<td>Dispatches a model spec to a fitter (<code>fit_supervised</code>, <code>fit_forecast</code>, <code>fit_stat_test</code>, <code>fit_unsupervised</code>), and formats the model card.</td>
+</tr>
+<tr class="odd">
+<td><code>R/stats-test.R</code></td>
+<td><code>t.test</code>, ANOVA, chi-square, and correlation, selected from the shape of the two columns given.</td>
+</tr>
+<tr class="even">
+<td><code>R/unsupervised.R</code></td>
+<td>PCA, k-means, and a pairwise correlation heatmap.</td>
 </tr>
 <tr class="odd">
 <td><code>R/providers.R</code></td>
-<td style="text-align: right;">129</td>
-<td>Provider catalog, in-place client swap</td>
+<td>Provider and model catalog for Anthropic and xAI, and in-place provider swapping.</td>
 </tr>
 <tr class="even">
-<td><code>app.R</code></td>
-<td style="text-align: right;">1186</td>
-<td>Shiny UI, tool registration, session wiring</td>
+<td><code>R/utils.R</code></td>
+<td><code>%or%</code>, <code>empty_to_null()</code>, and other small helpers shared by every <code>R/</code> file.</td>
+</tr>
+<tr class="odd">
+<td><code>data/</code></td>
+<td>Bundled CSVs (<code>orders.csv</code>, <code>food_delivery.csv</code>, <code>anscombe-quartet.csv</code>) plus anything a user uploads.</td>
+</tr>
+<tr class="even">
+<td><code>greeting.md</code>, <code>ml-greeting.md</code></td>
+<td>Static chat greetings shown before the first tool call, so startup does not spend a model call.</td>
+</tr>
+<tr class="odd">
+<td><code>extra-instructions.md</code></td>
+<td>Explore-page system-prompt judgment: when to slice versus break down, how to read a tool’s return.</td>
+</tr>
+<tr class="even">
+<td><code>ml-instructions.md</code></td>
+<td>Model-page system-prompt judgment: which method family answers which question, how to read cross-validation.</td>
+</tr>
+<tr class="odd">
+<td><code>tests/testthat/</code></td>
+<td>Characterization tests for the profiler, resolver, recipes, and tool schemas.</td>
 </tr>
 </tbody>
 </table>
-<p>Judgment that would bloat the schema lives in markdown instead: <code>extra-instructions.md</code> covers when to slice versus break down and how to read a tool return; <code>ml-instructions.md</code> covers when to test versus forecast versus lasso. <code>greeting.md</code> and <code>ml-greeting.md</code> are static, so startup spends no tokens.</p>
-<p><code>tests/testthat/</code> holds 12 files of characterization and agreement tests over the tool layer — including that the generated code pane agrees with the rendered chart.</p>
 </section>
-<section id="run-it" class="level2">
-<h2 class="anchored" data-anchor-id="run-it">Run it</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Put a key in your user .Renviron (usethis::edit_r_environ()), then restart R:</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#      ANTHROPIC_API_KEY=sk-ant-your-key-here</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#      XAI_API_KEY=xai-your-key-here</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. From the ellmer-practice folder as working directory:</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>)      <span class="co"># install packages</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"check-key.R"</span>)  <span class="co"># optional: prove the key works, for a fraction of a cent</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runApp</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>$5 of API credit covers a long session. Full setup notes and a troubleshooting table are in the <a href="https://github.com/ethandbard/ellmer-practice#readme">repository README</a>.</p>
 </section>
-<section id="limits" class="level2">
-<h2 class="anchored" data-anchor-id="limits">Limits</h2>
+<section id="loading-data" class="level2">
+<h2 class="anchored" data-anchor-id="loading-data">Loading data</h2>
+<p>The settings popover, the gear icon above the chat panel, offers three ways to change what is in table <code>data</code>:</p>
+<ol type="1">
+<li>A built-in source: the bundled <code>orders.csv</code>, or one of <code>penguins</code>, <code>mpg</code>, <code>diamonds</code>, <code>mtcars</code>, <code>iris</code>, <code>economics</code>, <code>txhousing</code>, <code>storms</code>, or <code>midwest</code> from base R and the tidyverse packages already on the search path.</li>
+<li>Any <code>.csv</code>, <code>.tsv</code>, <code>.txt</code>, or <code>.parquet</code> file already in <code>data/</code>. A 2-second <code>reactivePoll()</code> picks up a file dropped into the folder, so it appears in the dropdown without a restart.</li>
+<li>A direct upload, copied into <code>data/</code> and then loaded the same way as an existing local file.</li>
+</ol>
+<p>Loading a new source calls <code>apply_loaded_table()</code>. It rebuilds the column profile, refits the system prompts for both chat clients, clears both chat histories, and reruns the default view and default model. The page never shows a chart or a model built from the previous table.</p>
+</section>
+<section id="how-a-question-becomes-a-chart" class="level2">
+<h2 class="anchored" data-anchor-id="how-a-question-becomes-a-chart">How a question becomes a chart</h2>
+<section id="the-column-profile-drives-the-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="the-column-profile-drives-the-prompt">The column profile drives the prompt</h3>
+<p><code>R/profile.R</code> assigns every column a role from its statistics, not its name: cardinality, integer-ness, sign, and, for date-shaped strings, a parsed calendar. A column named <code>id</code> only becomes role <code>id</code> if its distinct-to-row ratio actually looks like one. An integer column named <code>year</code> becomes a <code>category</code>, not a <code>clock</code>, unless it also looks like a Date. Roles feed three things: the auto-chosen starting chart, <code>auto_features()</code> for modeling, and <code>format_profile_md()</code>, the markdown table appended to the system prompt and returned by the <code>describe_data</code> tool.</p>
+</section>
+<section id="the-set_dashboard-tool-contract" class="level3">
+<h3 class="anchored" data-anchor-id="the-set_dashboard-tool-contract">The set_dashboard tool contract</h3>
+<p>On every data question, the Explore chat calls <code>set_dashboard</code> exactly once, sending:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>A short title for the chart.</td>
+</tr>
+<tr class="even">
+<td><code>detail_sql</code></td>
+<td>Optional line-item <code>SELECT</code> against table <code>data</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>aggregate_sql</code></td>
+<td>Optional grouped/summary <code>SELECT</code>, every expression aliased.</td>
+</tr>
+<tr class="even">
+<td><code>plot</code></td>
+<td>The data mapping: <code>from</code>, <code>geom</code>, <code>x</code>, <code>y</code>, <code>color</code>, facets, sort, and axis labels.</td>
+</tr>
+<tr class="odd">
+<td><code>style</code></td>
+<td>The look: theme, palette, legend position, scales, and value labels.</td>
+</tr>
+</tbody>
+</table>
+<p><code>R/sql.R</code> gates every query through <code>is_read_only_sql()</code>. It strips comments and string literals, then checks for a leading <code>SELECT</code> or <code>WITH</code> and rejects write keywords. A legal <code>WHERE note = 'create'</code> is not mistaken for a <code>CREATE</code> statement. A follow-up that only restyles the chart — “make it dark,” “add value labels” — omits both SQL fields. The tool reuses the dashboard’s last query results instead of rerunning them.</p>
+</section>
+<section id="resolving-the-plot-spec" class="level3">
+<h3 class="anchored" data-anchor-id="resolving-the-plot-spec">Resolving the plot spec</h3>
+<p><code>resolve_plot_spec()</code> in <code>R/sql.R</code> turns the model’s raw arguments into a spec the renderer can trust:</p>
 <ul>
-<li><strong>One browser session.</strong> The DuckDB table is process-wide, so a second tab overwrites the first tab’s data. This is a workbench, not a multi-user service.</li>
-<li><strong>Preview fits, not pipelines.</strong> An 80/20 holdout, five-fold CV on the training rows, sensible defaults. Enough to see the shape of a problem; not a modeling pass you should ship.</li>
-<li><strong>The gate is a keyword gate.</strong> <code>is_read_only_sql()</code> strips literals and comments before checking, which handles the obvious evasions, but it is a parser approximation rather than a permission boundary. The threat model here is a confused model, not a hostile one.</li>
-<li><strong>The model still chooses.</strong> It writes the SQL and picks the features. Showing the query, the spec, and the call is what makes those choices checkable — and as the ROC note above shows, the panes catch disagreements that a single number would hide.</li>
+<li>Column names are matched case-insensitively and punctuation-insensitively against both SQL results, so <code>Order Date</code> resolves against <code>order_date</code>.</li>
+<li>A name that matches neither result is dropped, with a note the tool return surfaces back to the model.</li>
+<li>If the model puts a date column on <code>y</code> and a number on <code>x</code>, the resolver swaps them and flips the chart. A clock never ends up scaled like a dollar amount.</li>
+<li>An omitted <code>geom</code> triggers <code>auto_spec_from_df()</code>, which infers a chart from the result’s shape: a time series if a date and a measure both exist, a bar chart for a category and a measure, a histogram otherwise.</li>
 </ul>
-<div class="page-footer">
-<p>Source: <a href="https://github.com/ethandbard/ellmer-practice">github.com/ethandbard/ellmer-practice</a> · Built with R, Shiny, bslib, ellmer, querychat, DuckDB, tidymodels and ggplot2. · Screenshots from a live session on <code>midwest</code>, August 2026.</p>
+</section>
+<section id="one-recipe-two-consumers" class="level3">
+<h3 class="anchored" data-anchor-id="one-recipe-two-consumers">One recipe, two consumers</h3>
+<p><code>plot_recipe()</code> in <code>R/plot-recipe.R</code> does not build a ggplot object. It builds a list of unevaluated layer expressions, a <code>plot_recipe</code>, using <code>rlang::expr()</code>. <code>render_recipe()</code> evaluates that list against the plotted data frame to produce the chart. <code>deparse_recipe()</code> prints the same list, cleaned up by <code>pretty_r_code()</code>, as the R shown in the code pane. Both panes read the same expressions, so the chart and the printed code cannot drift apart.</p>
+</section>
+<section id="style-is-sticky" class="level3">
+<h3 class="anchored" data-anchor-id="style-is-sticky">Style is sticky</h3>
+<p><code>R/tools.R</code> keeps the dashboard’s style in a <code>reactiveValues</code> object: theme, palette, accent color, legend position, axis scales, and value-label formatting. Only the fields present in the current tool call overwrite it. Style set two questions ago survives until Reset, so “now make it dark” does not need repeating on every later question. A bare <code>highlight</code> argument survives a mapping change on its own.</p>
+</section>
+</section>
+<section id="how-a-question-becomes-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="how-a-question-becomes-a-model">How a question becomes a model</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/model-regression.jpg" class="img-fluid figure-img" style="width:95.0%" alt="Screenshot of the Model page showing a linear model's holdout actual-vs-predicted chart, a coefficient estimates chart, a model spec panel, and an R code panel."></p>
+<p></p><figcaption class="figure-caption">The Model page after fitting a linear model. The estimates panel (top left) and diagnostic panel (bottom left) read the same fit; the spec and R code panels (right) show what ran.</figcaption><p></p>
+</figure>
 </div>
+<section id="the-set_model-tool-contract" class="level3">
+<h3 class="anchored" data-anchor-id="the-set_model-tool-contract">The set_model tool contract</h3>
+<p><code>set_model</code> takes a single spec. The core fields are <code>method</code>, <code>target</code>, <code>features</code>, and <code>prepare_sql</code>. Method-specific fields cover the rest: <code>time_col</code> and <code>horizon</code> for forecasts, <code>subgroup</code> for a breakdown, plus <code>interactions</code>, <code>cv_folds</code>, <code>auto_select</code>, <code>k</code>, and <code>threshold</code>.</p>
+<p>Fields the model omits keep their current value from <code>mod$result</code>, through <code>merge_model_spec()</code>. A lone <code>subgroup = "region"</code> follow-up re-renders the existing fit broken down by region, with no refit. <code>ml-instructions.md</code> tells the model this directly: a “break down by region” question is one call with <code>subgroup=region</code>, never one <code>set_model</code> call per region.</p>
+</section>
+<section id="method-families" class="level3">
+<h3 class="anchored" data-anchor-id="method-families">Method families</h3>
+<p><code>run_model_request()</code> in <code>R/model-view.R</code> dispatches on <code>method</code>:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><code>method</code></th>
+<th>Dispatches to</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>regression</code>, <code>poisson</code></td>
+<td><code>fit_supervised()</code></td>
+<td><code>lm</code> or a Poisson <code>glm</code>, via a <code>parsnip</code>/<code>workflows</code> pipeline.</td>
+</tr>
+<tr class="even">
+<td><code>classification</code></td>
+<td><code>fit_supervised()</code></td>
+<td>Logistic <code>glm</code> for a 2-level target, multinomial (<code>nnet</code>) for 3–12 levels.</td>
+</tr>
+<tr class="odd">
+<td><code>ridge</code>, <code>elastic</code></td>
+<td><code>fit_supervised()</code></td>
+<td><code>glmnet</code>, mixture 0 or 0.5. <code>auto_select=true</code> on any method fits a lasso (mixture 1) instead.</td>
+</tr>
+<tr class="even">
+<td><code>tree</code>, <code>forest</code></td>
+<td><code>fit_supervised()</code></td>
+<td><code>rpart</code> or <code>ranger</code>. Classification mode is inferred if the target has 2 levels.</td>
+</tr>
+<tr class="odd">
+<td><code>gam</code></td>
+<td><code>fit_supervised()</code></td>
+<td><code>mgcv</code>; numeric predictors are wrapped in <code>s()</code>.</td>
+</tr>
+<tr class="even">
+<td><code>forecast</code></td>
+<td><code>fit_forecast()</code></td>
+<td>Holt-Winters, or Holt without a full seasonal cycle, via <code>stats::HoltWinters()</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>test</code></td>
+<td><code>fit_stat_test()</code></td>
+<td>Picks <code>cor.test</code>, Welch <code>t.test</code>, one-way ANOVA, or chi-square/Fisher from the shape of the two columns given.</td>
+</tr>
+<tr class="even">
+<td><code>pca</code>, <code>kmeans</code>, <code>correlation</code></td>
+<td><code>fit_unsupervised()</code></td>
+<td><code>prcomp</code>, <code>stats::kmeans</code>, and a pairwise <code>cor()</code> heatmap.</td>
+</tr>
+</tbody>
+</table>
+<p>Every supervised fit runs through the same pipeline in <code>make_supervised_workflow()</code>: a <code>recipes::recipe()</code> with dummy coding for non-tree engines, a <code>parsnip</code> model spec, and a <code>workflows::workflow()</code>. The lasso penalty for <code>ridge</code>, <code>elastic</code>, and <code>auto_select</code> fits comes from <code>cv.glmnet()</code>’s <code>lambda.1se</code>, not a fixed default.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/roc-curve.jpg" class="img-fluid figure-img" alt="ROC curve chart showing true positive rate against false positive rate on the holdout."></p>
+<p></p><figcaption class="figure-caption"><code>plot=roc</code>: true vs.&nbsp;false positive rate on the holdout, for a binary classification fit.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/decision-tree.jpg" class="img-fluid figure-img" alt="Decision tree chart with a root split on popdensity and leaf nodes showing predicted values."></p>
+<p></p><figcaption class="figure-caption"><code>plot=tree</code> (the <code>tree</code> method’s default): the fitted rpart tree, with leaves showing the predicted class or value.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/kmeans-clusters.jpg" class="img-fluid figure-img" alt="Scatter plot of k-means cluster assignments on the first two principal components, colored by cluster."></p>
+<p></p><figcaption class="figure-caption"><code>plot=cluster</code> (the <code>kmeans</code> method’s default): cluster assignment on the first two principal components.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="holdout-and-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="holdout-and-cross-validation">Holdout and cross-validation</h3>
+<p><code>split_frame()</code> in <code>R/model-tidymodels.R</code> picks a holdout strategy from the data:</p>
+<ul>
+<li>A chronological split when the modeling frame has a date column.</li>
+<li>A seeded 80/20 random split otherwise.</li>
+<li>An in-sample fit, clearly labeled, when the table has fewer than 40 rows.</li>
+</ul>
+<p>Every reported metric — RMSE, MAE, R², accuracy, AUC — comes from the holdout, scored against a named baseline. Regression compares to train-mean RMSE, classification to majority-class accuracy, and forecasts to last-value or seasonal-naive RMSE. <code>cv_folds</code> (default 5, 0 to skip) adds a second, independent estimate from <code>rsample::vfold_cv()</code> on the training rows only.</p>
+</section>
+<section id="two-panels-one-fit" class="level3">
+<h3 class="anchored" data-anchor-id="two-panels-one-fit">Two panels, one fit</h3>
+<p>The Model page always shows two charts side by side: an estimates panel (coefficients, when the fit has them) and a diagnostic panel. Both read the same fitted <code>res</code> object. Switching <code>plot</code> on the Model page’s tool call re-renders from the stored fit and does not refit. <code>secondary_plot_key()</code> in <code>R/model-recipe.R</code> picks the diagnostic panel’s default so it never repeats the estimates panel. A classification fit defaults to a confusion matrix; a regression fit defaults to actual-vs-predicted.</p>
+</section>
+</section>
+<section id="switching-language-model-providers" class="level2">
+<h2 class="anchored" data-anchor-id="switching-language-model-providers">Switching language model providers</h2>
+<p><code>R/providers.R</code> holds a small catalog of two providers, Anthropic and xAI, each with an environment variable and a list of models. The app starts on whichever provider has a key set, preferring Anthropic if both are present.</p>
+<p>Picking a different provider or model in the settings popover calls <code>attach_chat_provider()</code>. It swaps the live <code>ellmer</code> chat object’s internal provider in place, so the conversation UI does not need to remount. The swap reaches into an undocumented <code>ellmer</code> field (<code>private$provider</code>) behind a version guard and a <code>tryCatch()</code>. A failed swap shows a warning instead of silently continuing on the old provider.</p>
+</section>
+<section id="known-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="known-limitations">Known limitations</h2>
+<ul>
+<li><strong>One shared table per process.</strong> A second browser tab loading a new dataset overwrites the first tab’s data. This is a single-user preview tool, not a multi-tenant app.</li>
+<li><strong>No second, read-only DuckDB connection.</strong> DuckDB cannot <code>ATTACH</code> the same file twice for a second reader on Windows. An in-process <code>read_only = TRUE</code> handle still accepted a <code>DROP</code> in testing. SQL safety depends entirely on the <code>is_read_only_sql()</code> keyword and literal-stripping check, not on a database-level permission, and every chat-issued query passes through that gate.</li>
+<li><strong>Large tables are sampled for modeling.</strong> <code>fit_supervised()</code> samples down to 8,000 rows before fitting. The profile falls back to a 200-row preview once a table passes 80,000 rows, so summary statistics on very large tables are approximate.</li>
+<li><strong>The provider swap is version-pinned.</strong> <code>attach_chat_provider()</code> requires <code>ellmer</code> 0.4.2 or later and reaches into a private field. An <code>ellmer</code> upgrade that renames that field disables in-place provider switching until the guard is updated.</li>
+</ul>
+</section>
+<section id="run-the-app" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-app">Run the app</h2>
+<ol type="1">
+<li>Add at least one provider key (<code>ANTHROPIC_API_KEY</code> or <code>XAI_API_KEY</code>) to your user <code>.Renviron</code> and restart R. See <code>README.md</code> for where to get a key.</li>
+<li>From the <code>ellmer-practice</code> folder, run <code>source("setup.R")</code> to install missing packages.</li>
+<li>Run <code>shiny::runApp()</code>, or open <code>app.R</code> and click <strong>Run App</strong>.</li>
+</ol>
+<p><code>tests/testthat/</code> covers the profiler, the plot-spec resolver, the recipe builders, and the tool schemas. Run it with <code>testthat::test_dir("tests/testthat")</code> or <code>devtools::test()</code>.</p>
 </section>
 
 </main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
-  </script>
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
 </div> <!-- /content -->
 
 
 
-
-<script src="index_files/libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
