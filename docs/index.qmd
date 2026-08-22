@@ -61,6 +61,8 @@ counties, 28 columns, from `ggplot2`. Nothing in the app was tuned for it.
 ::: {.hero-meta}
 [R + Shiny]{} [ellmer]{} [querychat]{} [DuckDB]{} [tidymodels]{} [ggplot2]{} [Claude Haiku 4.5]{}
 :::
+
+Live at [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com), behind Cloudflare Access on Ethan's own API key. Everyone else runs it locally with their own key — see the [README](https://github.com/ethandbard/ellmer-practice#readme).
 :::
 
 ## Architecture

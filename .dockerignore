@@ -1,0 +1,35 @@
+# Rename to .dockerignore in the project root.
+#
+# Everything here either holds secrets, is state the server owns, or only
+# bloats the build context. A smaller context also means faster uploads on
+# every deploy.
+
+# Secrets -- never in an image layer
+config.env
+.env
+*.secrets.md
+
+# State the VPS owns
+data/
+logs/
+
+# Version control and local tooling
+.git/
+.github/
+.claude/
+.vscode/
+.idea/
+
+# Language artifacts
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+*.egg-info/
+.pytest_cache/
+
+# Tests and docs are not needed at runtime. Drop these two lines if the
+# image is expected to run its own test suite.
+tests/
+docs/

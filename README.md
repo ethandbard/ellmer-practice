@@ -2,6 +2,8 @@
 
 A Shiny **teaching workbench** for data-science ideas, driven by natural language.
 
+**Live**: [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com) — runs on Ethan's own API key behind Cloudflare Access, so it's not open to the public. Everyone else should run it locally with their own key (below).
+
 You ask in English. The model calls one tool. R runs the SQL or fits the model and refreshes every pane. The model does not see the raw rows by default — it sees a **statistical profile** of the table (roles, ranges, missingness) and, after each tool call, the numbers it just produced.
 
 Two pages, same loop:
