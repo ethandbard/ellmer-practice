@@ -14,7 +14,7 @@ format:
 
 ## Overview
 
-Live at [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com), behind Cloudflare Access on Ethan's own API key. Everyone else runs it locally with their own key — see the [README](https://github.com/ethandbard/ellmer-practice#readme).
+Live at [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com), behind Cloudflare Access on Ethan's own API key, and listed on [ethandbard.com](https://ethandbard.com). Everyone else runs it locally with their own key — see the [README](https://github.com/ethandbard/ellmer-practice#readme).
 
 ellmer-practice is a two-page Shiny app. Each page pairs a chat panel with a
 live preview: type a question in English, and the app turns it into a SQL

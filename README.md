@@ -2,7 +2,7 @@
 
 A Shiny **teaching workbench** for data-science ideas, driven by natural language.
 
-**Live**: [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com) — runs on Ethan's own API key behind Cloudflare Access, so it's not open to the public. Everyone else should run it locally with their own key (below).
+**Live**: [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com), listed on [ethandbard.com](https://ethandbard.com) — runs on Ethan's own API key behind Cloudflare Access, so it's not open to the public. Everyone else should run it locally with their own key (below).
 
 You ask in English. The model calls one tool. R runs the SQL or fits the model, then refreshes every pane.
 
