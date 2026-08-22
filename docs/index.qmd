@@ -1,627 +1,304 @@
 ---
-title: "Query & model preview"
-subtitle: "A Shiny workbench where an LLM writes SQL and model specs, R executes them, and every intermediate is on screen. A technical walkthrough."
+title: "ellmer-practice"
+subtitle: "How a Shiny workbench turns English questions into SQL, ggplot2 charts, and tidymodels fits"
 date: last-modified
 date-format: "MMMM D, YYYY"
 format:
   html:
-    theme: [cosmo, styles.scss]
+    theme: cosmo
     toc: true
     toc-depth: 3
     toc-title: "On this page"
-    toc-location: left
-    page-layout: article
-    anchor-sections: true
-    smooth-scroll: true
     code-copy: true
-    link-external-newwindow: true
-    fig-cap-location: bottom
-execute:
-  echo: false
-  warning: false
 ---
 
-```{r setup}
-#| include: false
-
-# Screenshot slots. A missing file renders a dashed placeholder instead of a
-# broken image, so the page still builds mid-edit.
-shot <- function(file, caption, alt = caption) {
-  path <- file.path("images", file)
-  if (file.exists(path)) {
-    knitr::asis_output(sprintf(
-      '<figure class="shot"><img src="%s" alt="%s"><figcaption>%s</figcaption></figure>',
-      path, htmltools::htmlEscape(alt, attribute = TRUE), caption
-    ))
-  } else {
-    knitr::asis_output(sprintf(
-      paste0('<div class="shot-slot"><span class="slot-label">Screenshot</span>',
-             '<span class="slot-file">docs/images/%s</span>',
-             '<span class="slot-note">%s</span></div>'),
-      file, caption
-    ))
-  }
-}
-```
-
-::: {.hero}
-::: {.hero-lede}
-The model does not analyze your data. It emits a **typed tool call** — SQL plus a
-plot or model spec — and R does everything after that.
-:::
-
-That split is the whole design. The LLM's output is a structured argument object
-validated against a schema, not prose and not code that gets `eval()`ed. R owns
-execution, the database, the rendering, and the statistics. What reaches the model
-afterwards is the result R computed.
-
-Every screenshot below is a live session against `midwest` — 437 Midwestern
-counties, 28 columns, from `ggplot2`. Nothing in the app was tuned for it.
-
-::: {.hero-meta}
-[R + Shiny]{} [ellmer]{} [querychat]{} [DuckDB]{} [tidymodels]{} [ggplot2]{} [Claude Haiku 4.5]{}
-:::
+## Overview
 
 Live at [ellmer-practice.ethandbard.com](https://ellmer-practice.ethandbard.com), behind Cloudflare Access on Ethan's own API key. Everyone else runs it locally with their own key — see the [README](https://github.com/ethandbard/ellmer-practice#readme).
-:::
+
+ellmer-practice is a two-page Shiny app. Each page pairs a chat panel with a
+live preview: type a question in English, and the app turns it into a SQL
+query, a model fit, or both. It then redraws the chart and the code pane
+beside it.
+
+- **Explore** answers questions with SQL against a DuckDB table and draws a
+  ggplot2 chart from the result.
+- **Model** fits a small regression, classification, forecast, statistical
+  test, or unsupervised model on the same table and draws its diagnostics.
+
+The chat model never sees raw rows. It sees a statistical profile of the
+loaded table — each column's role, range, and missingness — and calls one
+typed tool per question. R runs the SQL or fits the model, and every session
+watches the same DuckDB table.
+
+![The Explore page after a question. Chat on the left, the featured chart in the center, and the SQL and ggplot2 code that produced it on the right.](images/explore-bar-chart.jpg){fig-alt="Screenshot of the Explore page showing a bar chart of average college-educated adults by state, a chat panel on the left, and SQL and ggplot2 code panels on the right." width="95%"}
 
 ## Architecture
 
-One turn is one tool call. There is no agent loop, no multi-step planning, and no
-path by which the model reaches the database directly.
+### One process, one table, many sessions
 
-```{mermaid}
-flowchart TB
-  subgraph LLM["Model — Anthropic or xAI"]
-    T["Emits one typed tool call<br/><b>set_dashboard</b> or <b>set_model</b>"]
-  end
-  subgraph RS["R — Shiny process"]
-    G["<b>is_read_only_sql()</b><br/>reject non-SELECT"]
-    D[("DuckDB<br/>table <b>data</b>")]
-    RC["Plot recipe /<br/>tidymodels workflow"]
-    P["Panes: chart · SQL · code"]
-    S["Result summary<br/>+ profile"]
-  end
-  Q["Your question"] --> T
-  T --> G
-  G -->|"SELECT / WITH only"| D
-  D --> RC
-  RC --> P
-  RC --> S
-  S -->|"numbers R computed"| T
-  G -.->|"rejected: error text<br/>names allowed columns"| T
-```
+`app.R` opens a single file-backed DuckDB connection (`dash_con`) when the
+Shiny process starts, and writes the starter dataset into a table named
+`data`. Every browser session shares that connection. Loading a new
+dataset — a built-in source, an upload, or a file dropped into `data/` —
+overwrites table `data` for the whole process, not just the current tab.
 
-The dotted edge matters as much as the solid ones: a failed query returns a message
-naming the legal columns and asking for a retry, so a hallucinated column name
-becomes a self-correcting round trip rather than a broken pane.
+A module-level object, `current_source`, tracks the label, column names, row
+count, and preview of whatever is currently in table `data`. Each new
+session reads `current_source` at startup instead of the original starter
+dataset. A second tab, or a reload of the same tab, shows what an earlier
+session loaded rather than resetting to the original CSV.
 
-## What the model is actually given
+### Two chat clients, one tool contract each
 
-### A statistical profile, not rows
+`app.R` creates two [querychat](https://github.com/posit-dev/querychat)
+instances, `qc` (Explore) and `qc_ml` (Model), each wrapping its own `ellmer`
+chat client. Both point at the same DuckDB connection, so their built-in
+`query` tool can run read-only SQL directly. `app.R` then registers
+additional tools on each client's underlying chat object:
 
-By default the chat client never receives the table contents. On load, R profiles
-every column and writes that profile into the system prompt. A `describe_data`
-tool lets the model re-read it on demand.
+| Tool | Registered on | Purpose |
+| --- | --- | --- |
+| `set_dashboard` | Explore | Run up to two SQL queries and redraw the featured chart. |
+| `describe_current_chart` | Explore | Describe the chart already on screen without changing it. |
+| `describe_data` | Explore, Model | Return the column profile of the loaded table. |
+| `set_model` | Model | Fit a model and redraw the Model page. |
+| `describe_current_model` | Model | Describe the model already on screen without refitting. |
 
-```{r}
-shot("profile-greeting.jpg",
-     "The session opening on <code>midwest</code>: 437 rows, 28 columns, and the full column list — the model's entire view of the table before it asks anything.")
-```
+Each tool's arguments are typed with `ellmer::type_*()` calls in
+[R/tools.R](../R/tools.R). The model can only send fields the app knows how
+to interpret. Enum fields — geoms, themes, palettes, model methods — are
+built from the same registries the renderer uses. Adding a theme or a geom
+is one list entry, not a schema edit and a separate renderer edit.
 
-Roles are inferred from **statistics**, with column names used only as a small
-tiebreak. From `R/profile.R`:
+### File map
 
-```r
-profile_roles <- c("measure", "count", "category", "clock", "id", "text", "constant")
-```
+| File | Role |
+| --- | --- |
+| `app.R` | Shiny UI, server, data loading, and tool registration. |
+| `R/profile.R` | Column profiler: infers a role (measure, count, category, clock, id, text, constant) for every column from its statistics. |
+| `R/sql.R` | Runs read-only SQL, auto-picks a starting chart from a table's profile, and holds the plot-spec vocabulary (geoms, sort keys, label formats). |
+| `R/plot-recipe.R` | Turns a resolved plot spec into a ggplot2 recipe: a list of unevaluated layer expressions shared by the renderer and the code pane. |
+| `R/theme.R` | Theme and palette registries for the featured chart. |
+| `R/dashboard-view.R` | Wires the Explore page's SQL results to a plot recipe and formats the tool's return text. |
+| `R/tools.R` | Typed tool schemas, sticky style merging, and tool-return formatting shared by both pages. |
+| `R/model-tidymodels.R` | tidymodels helpers: workflow builders, prediction, coefficient tidying, partial dependence, tree layout. |
+| `R/model-recipe.R` | Model-page plot recipes (one per `plot` key) and the R code shown in the code pane. |
+| `R/model-view.R` | Dispatches a model spec to a fitter (`fit_supervised`, `fit_forecast`, `fit_stat_test`, `fit_unsupervised`), and formats the model card. |
+| `R/stats-test.R` | `t.test`, ANOVA, chi-square, and correlation, selected from the shape of the two columns given. |
+| `R/unsupervised.R` | PCA, k-means, and a pairwise correlation heatmap. |
+| `R/providers.R` | Provider and model catalog for Anthropic and xAI, and in-place provider swapping. |
+| `R/utils.R` | `%or%`, `empty_to_null()`, and other small helpers shared by every `R/` file. |
+| `data/` | Bundled CSVs (`orders.csv`, `food_delivery.csv`, `anscombe-quartet.csv`) plus anything a user uploads. |
+| `greeting.md`, `ml-greeting.md` | Static chat greetings shown before the first tool call, so startup does not spend a model call. |
+| `extra-instructions.md` | Explore-page system-prompt judgment: when to slice versus break down, how to read a tool's return. |
+| `ml-instructions.md` | Model-page system-prompt judgment: which method family answers which question, how to read cross-validation. |
+| `tests/testthat/` | Characterization tests for the profiler, resolver, recipes, and tool schemas. |
 
-The classifier reads cardinality, type, integer-ness, sign, and missingness. A few
-of the rules that make it survive unfamiliar tables:
+## Loading data
 
-```r
-if (d <= 1) return("constant")                      # single distinct value
-if (isTRUE(row$parsed_clock)) return("clock")       # parses as a date
+The settings popover, the gear icon above the chat panel, offers three ways
+to change what is in table `data`:
 
-# character/factor with a small, stable set of levels
-if ((is.character(x) || is.factor(x)) && d >= 2 && d <= 20) return("category")
+1. A built-in source: the bundled `orders.csv`, or one of `penguins`, `mpg`,
+   `diamonds`, `mtcars`, `iris`, `economics`, `txhousing`, `storms`, or
+   `midwest` from base R and the tidyverse packages already on the search
+   path.
+2. Any `.csv`, `.tsv`, `.txt`, or `.parquet` file already in `data/`. A
+   2-second `reactivePoll()` picks up a file dropped into the folder, so it
+   appears in the dropdown without a restart.
+3. A direct upload, copied into `data/` and then loaded the same way as an
+   existing local file.
 
-# count-named non-negative integers beat the small-integer category rule:
-# food_delivery$items is 1-8 and is a count, not a grouping
-if (is.numeric(x) && isTRUE(row$is_integerish) && isTRUE(row$all_nonneg) && count_name) {
-  # ... unless it is a 1-10 rating/score, which is a measure
-  return("count")
-}
+Loading a new source calls `apply_loaded_table()`. It rebuilds the column
+profile, refits the system prompts for both chat clients, clears both chat
+histories, and reruns the default view and default model. The page never
+shows a chart or a model built from the previous table.
 
-# numeric encodings of categories: cyl, gear, carb
-if (isTRUE(row$is_integerish) && !yearish && d >= 2 && d <= 12 && ratio < 0.15) {
-  return("category")
-}
-```
+## How a question becomes a chart
 
-Integer years are explicitly *not* treated as a clock, and a 1–10 column named
-`rating` is a measure rather than a count. These are the cases that break
-name-matching schemas.
+### The column profile drives the prompt
 
-The same profile feeds four consumers — the system prompt, `auto_view()` (the
-default chart), `auto_features()` (default model predictors), and the
-`describe_data` tool — so the app's automatic choices and the model's suggestions
-are derived from one description of the data.
+`R/profile.R` assigns every column a role from its statistics, not its
+name: cardinality, integer-ness, sign, and, for date-shaped strings, a
+parsed calendar. A column named `id` only becomes role `id` if its
+distinct-to-row ratio actually looks like one. An integer column named
+`year` becomes a `category`, not a `clock`, unless it also looks like a
+Date. Roles feed three things: the auto-chosen starting chart,
+`auto_features()` for modeling, and `format_profile_md()`, the markdown
+table appended to the system prompt and returned by the `describe_data`
+tool.
 
-### A typed tool schema
+### The set_dashboard tool contract
 
-`set_dashboard` is an `ellmer` schema, not a prompt convention. Every field is
-optional and enum-constrained where possible, and the enums are generated from the
-same registries the renderer uses — adding a theme is one list entry, not a second
-schema edit.
+On every data question, the Explore chat calls `set_dashboard` exactly
+once, sending:
 
-```r
-plot_spec_type <- function() {
-  ellmer::type_object(
-    .description = "What to show. Data mapping for the featured ggplot.",
-    from   = opt_enum(c("detail", "aggregate", "auto"), "Which SQL result to plot."),
-    geom   = opt_enum(c(allowed_geoms, "auto"), "ggplot geom. bar is accepted as col."),
-    x      = opt_string("Column for x, from the chosen SQL result."),
-    y      = opt_string("Column for y. Omit for histogram/density."),
-    color  = opt_string("Optional color/fill column."),
-    facet  = opt_string("Facet wrap column, or the grid's row variable."),
-    smooth = opt_enum(c("none", "lm", "loess"), "Add a smooth to point/jitter charts."),
-    # ... sort, position, titles, annotations, reference lines, bounds
-    .required = FALSE
-  )
-}
-```
+| Argument | Contains |
+| --- | --- |
+| `title` | A short title for the chart. |
+| `detail_sql` | Optional line-item `SELECT` against table `data`. |
+| `aggregate_sql` | Optional grouped/summary `SELECT`, every expression aliased. |
+| `plot` | The data mapping: `from`, `geom`, `x`, `y`, `color`, facets, sort, and axis labels. |
+| `style` | The look: theme, palette, legend position, scales, and value labels. |
 
-The geom enum is closed:
+`R/sql.R` gates every query through `is_read_only_sql()`. It strips
+comments and string literals, then checks for a leading `SELECT` or `WITH`
+and rejects write keywords. A legal `WHERE note = 'create'` is not mistaken
+for a `CREATE` statement. A follow-up that only restyles the chart —
+"make it dark," "add value labels" — omits both SQL fields. The tool
+reuses the dashboard's last query results instead of rerunning them.
 
-```r
-allowed_geoms <- c(
-  "col", "line", "point", "histogram", "boxplot", "density", "area",
-  "violin", "jitter", "tile", "hex", "bin2d", "ecdf", "qq",
-  "errorbar", "pointrange", "step", "ribbon"
-)
-```
+### Resolving the plot spec
 
-**Style is a separate, sticky channel.** `style_spec_type()` carries theme,
-palette, accent, highlight, legend position, scale transforms, number formats and
-label sizes. Merge semantics are partial-update: only the fields sent are
-overwritten, and they persist until reset.
+`resolve_plot_spec()` in `R/sql.R` turns the model's raw arguments into a
+spec the renderer can trust:
 
-That is what makes *"now make it dark"* a one-field call. The model omits both SQL
-strings and the entire plot mapping; R reuses the last result set and re-renders.
-From `app.R`:
+- Column names are matched case-insensitively and punctuation-insensitively
+  against both SQL results, so `Order Date` resolves against `order_date`.
+- A name that matches neither result is dropped, with a note the tool return
+  surfaces back to the model.
+- If the model puts a date column on `y` and a number on `x`, the resolver
+  swaps them and flips the chart. A clock never ends up scaled like a
+  dollar amount.
+- An omitted `geom` triggers `auto_spec_from_df()`, which infers a chart
+  from the result's shape: a time series if a date and a measure both
+  exist, a bar chart for a category and a measure, a histogram otherwise.
 
-```r
-reused <- reuse_last_queries(detail, agg, list(
-  detail_df     = isolate(dash$detail_df),
-  aggregate_df  = isolate(dash$aggregate_df),
-  detail_sql    = isolate(dash$detail_sql),
-  aggregate_sql = isolate(dash$aggregate_sql)
-))
-if (!detail$used && !agg$used) {
-  return("No chart to restyle yet. Ask a data question first, or provide SQL.")
-}
-```
+### One recipe, two consumers
 
-### SQL it is allowed to run
+`plot_recipe()` in `R/plot-recipe.R` does not build a ggplot object. It
+builds a list of unevaluated layer expressions, a `plot_recipe`, using
+`rlang::expr()`. `render_recipe()` evaluates that list against the plotted
+data frame to produce the chart. `deparse_recipe()` prints the same list,
+cleaned up by `pretty_r_code()`, as the R shown in the code pane. Both
+panes read the same expressions, so the chart and the printed code cannot
+drift apart.
 
-Model-authored SQL is gated before it reaches DuckDB. The interesting part is the
-order of operations — comments and string literals are stripped *first*, so
-`WHERE note = 'create'` is a legal read rather than a false positive:
+### Style is sticky
 
-```r
-strip_sql_noise <- function(sql) {
-  stripped <- gsub("--[^\\n]*", " ", sql)
-  stripped <- gsub("/\\*.*?\\*/", " ", stripped)
-  stripped <- gsub("'([^']|'')*'", "''", stripped)   # single-quoted literals
-  stripped <- gsub('"([^"]|"")*"', '""', stripped)   # double-quoted identifiers
-  trimws(stripped)
-}
+`R/tools.R` keeps the dashboard's style in a `reactiveValues` object:
+theme, palette, accent color, legend position, axis scales, and
+value-label formatting. Only the fields present in the current tool call
+overwrite it. Style set two questions ago survives until Reset, so "now
+make it dark" does not need repeating on every later question. A bare
+`highlight` argument survives a mapping change on its own.
 
-is_read_only_sql <- function(sql) {
-  stripped <- strip_sql_noise(sql)
-  if (!grepl("^(with|select)\\b", stripped, ignore.case = TRUE)) return(FALSE)
+## How a question becomes a model
 
-  # a second statement after a SELECT: `SELECT 1; DROP TABLE data`
-  rest <- sub("^(with|select)\\b", "", stripped, ignore.case = TRUE)
-  if (grepl(";", rest)) return(FALSE)
+![The Model page after fitting a linear model. The estimates panel (top left) and diagnostic panel (bottom left) read the same fit; the spec and R code panels (right) show what ran.](images/model-regression.jpg){fig-alt="Screenshot of the Model page showing a linear model's holdout actual-vs-predicted chart, a coefficient estimates chart, a model spec panel, and an R code panel." width="95%"}
 
-  !grepl("\\b(insert|update|delete|drop|alter|create|attach|copy|pragma|grant|truncate)\\b",
-         stripped, ignore.case = TRUE)
-}
-```
+### The set_model tool contract
 
-::: {.callout-note appearance="simple"}
-A source comment records why this is a keyword gate rather than a read-only
-connection: on Windows, DuckDB cannot `ATTACH` the same file while a writer is
-open, and an in-process `read_only = TRUE` handle still accepted `DROP` in testing.
+`set_model` takes a single spec. The core fields are `method`, `target`,
+`features`, and `prepare_sql`. Method-specific fields cover the rest:
+`time_col` and `horizon` for forecasts, `subgroup` for a breakdown, plus
+`interactions`, `cv_folds`, `auto_select`, `k`, and `threshold`.
+
+Fields the model omits keep their current value from `mod$result`, through
+`merge_model_spec()`. A lone `subgroup = "region"` follow-up re-renders the
+existing fit broken down by region, with no refit. `ml-instructions.md`
+tells the model this directly: a "break down by region" question is one
+call with `subgroup=region`, never one `set_model` call per region.
+
+### Method families
+
+`run_model_request()` in `R/model-view.R` dispatches on `method`:
+
+| `method` | Dispatches to | Notes |
+| --- | --- | --- |
+| `regression`, `poisson` | `fit_supervised()` | `lm` or a Poisson `glm`, via a `parsnip`/`workflows` pipeline. |
+| `classification` | `fit_supervised()` | Logistic `glm` for a 2-level target, multinomial (`nnet`) for 3–12 levels. |
+| `ridge`, `elastic` | `fit_supervised()` | `glmnet`, mixture 0 or 0.5. `auto_select=true` on any method fits a lasso (mixture 1) instead. |
+| `tree`, `forest` | `fit_supervised()` | `rpart` or `ranger`. Classification mode is inferred if the target has 2 levels. |
+| `gam` | `fit_supervised()` | `mgcv`; numeric predictors are wrapped in `s()`. |
+| `forecast` | `fit_forecast()` | Holt-Winters, or Holt without a full seasonal cycle, via `stats::HoltWinters()`. |
+| `test` | `fit_stat_test()` | Picks `cor.test`, Welch `t.test`, one-way ANOVA, or chi-square/Fisher from the shape of the two columns given. |
+| `pca`, `kmeans`, `correlation` | `fit_unsupervised()` | `prcomp`, `stats::kmeans`, and a pairwise `cor()` heatmap. |
+
+Every supervised fit runs through the same pipeline in
+`make_supervised_workflow()`: a `recipes::recipe()` with dummy coding for
+non-tree engines, a `parsnip` model spec, and a `workflows::workflow()`.
+The lasso penalty for `ridge`, `elastic`, and `auto_select` fits comes from
+`cv.glmnet()`'s `lambda.1se`, not a fixed default.
+
+::: {layout-ncol="3"}
+![`plot=roc`: true vs. false positive rate on the holdout, for a binary classification fit.](images/roc-curve.jpg){fig-alt="ROC curve chart showing true positive rate against false positive rate on the holdout."}
+
+![`plot=tree` (the `tree` method's default): the fitted rpart tree, with leaves showing the predicted class or value.](images/decision-tree.jpg){fig-alt="Decision tree chart with a root split on popdensity and leaf nodes showing predicted values."}
+
+![`plot=cluster` (the `kmeans` method's default): cluster assignment on the first two principal components.](images/kmeans-clusters.jpg){fig-alt="Scatter plot of k-means cluster assignments on the first two principal components, colored by cluster."}
 :::
 
-## Explore: one question, three synced panes
-
-The Explore page opens with a chart nobody asked for — `auto_view()` picks it from
-the profile, so the page is never empty and the model has something to describe.
-
-```{r}
-shot("explore-load.jpg",
-     "<code>midwest</code> on load. <code>auto_view()</code> chose popdensity against area colored by state; the SQL and ggplot2 panes are already populated. Chat left, chart centre, code right — the split is drag-resizable.")
-```
-
-Then a question. *"Update the dashboard: average percent college-educated by state,
-as a bar chart"* fires exactly one `set_dashboard` call:
-
-```{r}
-shot("explore-bar.jpg",
-     "One tool call rewrites every pane. The chat answer quotes WI 20.02%, MI 19.42%, IL 18.79% — the same numbers you can read off the bars, because both came from the same result set.")
-```
-
-Nothing mapped "college-educated" to a column by hand. `percollege` was found in
-the profile.
-
-```{r}
-shot("tool-call.jpg",
-     "The transcript showing the <code>SET_DASHBOARD()</code> call itself. Expanding it reveals the exact arguments the model emitted.")
-```
-
-### The single-recipe invariant
-
-This is the claim worth being precise about. The chart pane and the code pane are
-not generated independently — they are two renderings of one plot recipe. The code
-on screen is the code that ran.
-
-::: {.panes}
-```{r}
-shot("pane-chart.jpg", "The rendered chart.")
-```
-
-```{r}
-shot("pane-sql.jpg", "Pane 1 — the SQL the model wrote, formatted by <code>format_sql()</code>.")
-```
-
-```{r}
-shot("pane-ggplot.jpg", "Pane 2 — the ggplot2 call generated from the same recipe that drew the chart above.")
-```
-:::
-
-The SQL is the model's, reformatted for reading:
-
-```sql
-SELECT
-  state,
-  AVG(percollege) AS avg_college_percent
-FROM data
-GROUP BY state
-ORDER BY avg_college_percent DESC;
-```
-
-The ggplot2 pane is generated, not transcribed — paste it into a script and you get
-the same figure back:
-
-```r
-ggplot(aggregate, aes(x = state, y = avg_college_percent, fill = state)) +
-  geom_col(position = "stack") +
-  labs(title = "Average College-Educated Adults by State",
-       x = "State", y = "Average % College-Educated") +
-  theme_minimal(base_size = 13) +
-  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#009E73",
-                               "#F0E442", "#0072B2")) +
-  theme(legend.position = "right")
-```
-
-The palette is Okabe–Ito. That is the default, not a request.
-
-### Asking for a relationship rather than a chart type
-
-*"Scatter of percent college-educated vs percent below poverty, colored by state,
-with a linear smooth"* — one sentence, three schema fields (`geom = "point"`,
-`color = "state"`, `smooth = "lm"`).
-
-```{r}
-shot("scatter-smooth.jpg",
-     "<code>geom_point()</code> + <code>geom_smooth(method = \"lm\")</code> fit per state. More college-educated adults, less poverty — a negative slope in all five states, and the per-state fits differ enough to be worth noticing.")
-```
-
-Because style is sticky, the Okabe–Ito palette and theme carried over from the
-previous question without being restated. Flipping **Interactive (Plotly)** in the
-sidebar renders the same recipe through `plotly` with hover and zoom.
-
-## Model: preview fits with a named baseline
-
-The Model page fits a small `tidymodels` workflow and reports holdout metrics
-**against a named baseline**. The baseline is the point — a metric without one is
-not interpretable, and this app refuses to show one alone.
-
-`set_model` accepts these methods:
-
-```r
-allowed_ml_methods <- c(
-  "regression", "classification", "forecast",
-  "poisson", "tree", "forest", "ridge", "elastic", "gam",
-  "test", "pca", "kmeans", "correlation"
-)
-```
-
-and these diagnostic plots:
-
-```r
-allowed_ml_plots <- c(
-  "coef", "actual_pred", "residual", "forecast", "cv", "subgroup",
-  "roc", "pr", "confusion", "calibration",
-  "tree", "importance", "pdp", "path",
-  "scree", "biplot", "cluster", "elbow",
-  "heatmap", "stl", "test"
-)
-```
-
-Method names are aliased (`lm`, `linear`, `ols`, `regress` → `regression`;
-`glm`, `logistic` → `classification`), so the model does not have to guess the
-canonical token.
-
-### Regression, and a result that admits it is weak
-
-*"Predict percent below poverty from percent college-educated, population density,
-and metro status."*
-
-```{r}
-shot("model-regression.jpg",
-     "Fit plot and coefficient estimates on the left; the model spec and the generated R on the right. The spec pane reports the split, the holdout metrics, and the baseline together.")
-```
-
-The spec pane reads:
-
-```
-method    regression
-target    percbelowpoverty
-features  percollege, popdensity, inmetro
-n         437
-split     random 80/20 holdout (seed 1) · train 350 / test 87
-
-Holdout
-rmse      4.567
-mae       3.617
-mape      32.9%
-r2        -0.001
-baseline  4.579 RMSE (train mean)
-```
-
-RMSE 4.567 against a train-mean baseline of 4.579, and R² ≈ 0. **The model barely
-beats guessing the average, and the pane says so.** Reported alone, R² near zero
-would look like a bug; next to a baseline it reads correctly as a weak predictor.
-
-The coefficients are still real and still interpretable: each additional percentage
-point of college attainment is associated with about **0.22 points less poverty**
-(p < 0.001), and metro counties run **2.6 points lower** than rural ones. Modest
-predictive power and genuine associations are not the same claim, and separating
-them is exactly what the baseline buys you.
-
-Cross-validation runs on training folds only. The R pane prints the actual call:
-
-```r
-frame <- data
-# 80/20 split -> train, test
-rec <- recipe(percbelowpoverty ~ percollege + popdensity + inmetro, data = train) |>
-  step_dummy(all_nominal_predictors()) |>
-  step_zv(all_predictors())
-spec <- linear_reg() |> set_engine("lm")
-wf   <- workflow() |> add_recipe(rec) |> add_model(spec)
-fit  <- fit(wf, data = train)
-pred <- predict(fit, new_data = test)
-tidy(extract_fit_parsnip(fit), conf.int = TRUE)
-```
-
-### Classification
-
-*"Classify whether a county is in a metro area, and show the ROC curve."*
-
-```{r}
-shot("classification-metrics.jpg",
-     "Logistic GLM via parsnip. Accuracy 0.875 against a 0.669 always-negative baseline, AUC 0.937, log-loss 0.321 — and the positive class stated explicitly as <code>1 vs 0</code>.")
-```
-
-Accuracy alone would be misleading here: the classes are unbalanced enough that
-always guessing non-metro scores 0.669. The gap from 0.669 to 0.875, plus AUC
-0.937 and cross-validated AUC 0.933 ± 0.005 on the training folds, is the real
-result.
-
-```{r}
-shot("roc-curve.jpg",
-     "The ROC pane for the fit above. See the note below — this curve is drawn inverted relative to the reported AUC.")
-```
-
-::: {.callout-warning appearance="simple"}
-## Known issue: the ROC curve is drawn with the positive class flipped
-
-The fit reports AUC **0.937**, but the plotted curve falls below the diagonal —
-an area of roughly 0.063, which is 1 − 0.937. The metric is computed against
-`positive 1 vs 0`; the curve is being traced against the other class. The numbers
-in the metrics pane are correct, and the diagnostic plot is not. Left visible here
-because it is a good illustration of why the app prints its metrics and its call
-next to every figure — the disagreement is detectable precisely because both are
-on screen.
-:::
-
-### A model you can read out loud
-
-*"Show me a decision tree for metro status."*
-
-```{r}
-shot("decision-tree.jpg",
-     "An <code>rpart</code> tree, depth-capped at 4 so the preview stays legible. Population density splits first (importance 75.4), then poverty rate.")
-```
-
-CV accuracy 0.868 against the logistic model's 0.875; CV AUC 0.864 against 0.937.
-The tree is slightly worse and dramatically easier to explain — and because both
-fits report the same metrics, the size of that trade is visible rather than
-asserted.
-
-### Unsupervised, same tool
-
-*"Cluster the counties on their numeric columns."* — 25 numeric columns, k chosen
-by the model at 3, projected onto the first two principal components.
-
-```{r}
-shot("kmeans-pca.jpg",
-     "k-means on the first two PCs. One dense cluster of small rural counties, a broad middle, and a single far outlier — Cook County, IL.")
-```
-
-PCA, k-means and the correlation heatmap all route through `set_model`. When a
-view has no coefficient table, the estimates pane says so rather than rendering an
-empty chart.
-
-### "Is the difference real?" is a first-class question
-
-Significance questions dispatch to a test rather than a predictor. The choice among
-t-test, ANOVA, chi-square and correlation comes from the column roles in the
-profile.
-
-```{r}
-shot("correlation-test.jpg",
-     "<code>Pearson cor.test</code> on the full sample: estimate −0.311, 95% CI [−0.394, −0.224], p < 0.001 — with the caveat printed by R, not written by the model.")
-```
-
-Metro counties run roughly 3–4 percentage points lower on poverty and zero is
-nowhere near the interval. The result pane carries its own caveat — *correlation is
-an association, not a cause* — emitted by R as part of the test output, so it
-cannot be omitted by a model in a hurry.
-
-## State, sessions, and the provider swap
-
-Three implementation details that are easy to get wrong and are worth reading the
-source for.
-
-### The DuckDB table is process-wide
-
-There is one table named `data` for the whole Shiny process. A session's
-`reactiveValues` used to be seeded with the boot-time starter table regardless of
-what a previous session had loaded — so a reload would claim `orders.csv` while the
-real table held something else. The fix is a single process-level source of truth
-that every session reads at start:
-
-```r
-current_source <- local({
-  env <- new.env(parent = emptyenv())
-  env$label   <- "orders.csv"
-  env$columns <- names(starter)
-  env$n       <- nrow(starter)
-  env$preview <- starter
-  env
-})
-```
-
-`apply_loaded_table()` updates it on every load; each new session calls that
-function against it rather than against the starter.
-
-### `querychat` gets the connection, not a data frame
-
-Passing a data frame to `QueryChat$new()` wraps it in a `DataFrameSource` that
-freezes rows at construction. Since each session clones its chat client once at
-startup, that snapshot would go stale on the next upload. Passing the live
-connection builds a `DBISource` whose query tool re-reads the table on every call:
-
-```r
-qc <- QueryChat$new(
-  dash_con,                    # live connection, not a snapshot
-  table_name = "data",
-  client = client,
-  tools = "query",
-  greeting = "greeting.md",
-  extra_instructions = build_analyst_prompt(names(starter), nrow(starter),
-                                            "orders.csv", df = starter)
-)
-```
-
-### Swapping providers mid-session
-
-The sidebar switches between the Anthropic and xAI APIs without rebuilding the
-querychat module, by replacing the provider inside the live `Chat` object. This
-reaches into `ellmer` internals and is version-guarded accordingly:
-
-```r
-attach_chat_provider <- function(live_chat, new_chat) {
-  if (!ellmer_supported("0.4.2")) {
-    warning("ellmer < 0.4.2: in-place provider swap is unsupported.", call. = FALSE)
-    return(FALSE)
-  }
-  tryCatch({
-    live_chat$.__enclos_env__$private$provider <- new_chat$get_provider()
-    live_chat$set_turns(list())
-    TRUE
-  }, error = function(e) FALSE)
-}
-```
-
-If the swap fails the user gets a notification telling them to restart, rather than
-a silent fallback to the old model.
-
-| Provider | Models in the picker |
-|---|---|
-| Anthropic (Claude) | Haiku 4.5 (default), Sonnet 4.6, Sonnet 5 |
-| xAI (Grok) | Grok 4.5 (default), Grok 4.6, Grok 4.3 |
-
-Everything shown on this page ran on **Claude Haiku 4.5**. This bills the developer
-API, not a Claude.ai or grok.com subscription.
-
-## The code
-
-About 250 KB of R across a dozen files. The chat layer is the thin part.
-
-| File | Lines | Role |
-|---|---:|---|
-| `R/model-view.R` | 1938 | Method/plot dispatch, spec formatting, metric reporting |
-| `R/dashboard-view.R` | 899 | Geom registry, spec resolution, auto-view |
-| `R/model-recipe.R` | 782 | Model plot recipes |
-| `R/plot-recipe.R` | 766 | One recipe → chart pane and code pane |
-| `R/tools.R` | 459 | Typed tool schemas, sticky style merge |
-| `R/profile.R` | 451 | Column roles inferred from statistics |
-| `R/model-tidymodels.R` | 360 | parsnip / recipes / workflows / yardstick |
-| `R/stats-test.R` | 206 | t-test, ANOVA, chi-square, correlation |
-| `R/unsupervised.R` | 155 | PCA, k-means, correlation heatmap |
-| `R/sql.R` | 156 | DuckDB helpers and the read-only gate |
-| `R/providers.R` | 129 | Provider catalog, in-place client swap |
-| `app.R` | 1186 | Shiny UI, tool registration, session wiring |
-
-Judgment that would bloat the schema lives in markdown instead:
-`extra-instructions.md` covers when to slice versus break down and how to read a
-tool return; `ml-instructions.md` covers when to test versus forecast versus lasso.
-`greeting.md` and `ml-greeting.md` are static, so startup spends no tokens.
-
-`tests/testthat/` holds 12 files of characterization and agreement tests over the
-tool layer — including that the generated code pane agrees with the rendered chart.
-
-## Run it
-
-```r
-# 1. Put a key in your user .Renviron (usethis::edit_r_environ()), then restart R:
-#      ANTHROPIC_API_KEY=sk-ant-your-key-here
-#      XAI_API_KEY=xai-your-key-here
-
-# 2. From the ellmer-practice folder as working directory:
-source("setup.R")      # install packages
-source("check-key.R")  # optional: prove the key works, for a fraction of a cent
-shiny::runApp()
-```
-
-$5 of API credit covers a long session. Full setup notes and a troubleshooting
-table are in the [repository README](https://github.com/ethandbard/ellmer-practice#readme).
-
-## Limits
-
-- **One browser session.** The DuckDB table is process-wide, so a second tab
-  overwrites the first tab's data. This is a workbench, not a multi-user service.
-- **Preview fits, not pipelines.** An 80/20 holdout, five-fold CV on the training
-  rows, sensible defaults. Enough to see the shape of a problem; not a modeling
-  pass you should ship.
-- **The gate is a keyword gate.** `is_read_only_sql()` strips literals and comments
-  before checking, which handles the obvious evasions, but it is a parser
-  approximation rather than a permission boundary. The threat model here is a
-  confused model, not a hostile one.
-- **The model still chooses.** It writes the SQL and picks the features. Showing
-  the query, the spec, and the call is what makes those choices checkable — and as
-  the ROC note above shows, the panes catch disagreements that a single number
-  would hide.
-
-::: {.page-footer}
-Source: [github.com/ethandbard/ellmer-practice](https://github.com/ethandbard/ellmer-practice) ·
-Built with R, Shiny, bslib, ellmer, querychat, DuckDB, tidymodels and ggplot2. ·
-Screenshots from a live session on `midwest`, August 2026.
-:::
+### Holdout and cross-validation
+
+`split_frame()` in `R/model-tidymodels.R` picks a holdout strategy from the
+data:
+
+- A chronological split when the modeling frame has a date column.
+- A seeded 80/20 random split otherwise.
+- An in-sample fit, clearly labeled, when the table has fewer than 40 rows.
+
+Every reported metric — RMSE, MAE, R², accuracy, AUC — comes from the
+holdout, scored against a named baseline. Regression compares to train-mean
+RMSE, classification to majority-class accuracy, and forecasts to
+last-value or seasonal-naive RMSE. `cv_folds` (default 5, 0 to skip) adds a
+second, independent estimate from `rsample::vfold_cv()` on the training
+rows only.
+
+### Two panels, one fit
+
+The Model page always shows two charts side by side: an estimates panel
+(coefficients, when the fit has them) and a diagnostic panel. Both read the
+same fitted `res` object. Switching `plot` on the Model page's tool call
+re-renders from the stored fit and does not refit. `secondary_plot_key()`
+in `R/model-recipe.R` picks the diagnostic panel's default so it never
+repeats the estimates panel. A classification fit defaults to a confusion
+matrix; a regression fit defaults to actual-vs-predicted.
+
+## Switching language model providers
+
+`R/providers.R` holds a small catalog of two providers, Anthropic and xAI,
+each with an environment variable and a list of models. The app starts on
+whichever provider has a key set, preferring Anthropic if both are
+present.
+
+Picking a different provider or model in the settings popover calls
+`attach_chat_provider()`. It swaps the live `ellmer` chat object's internal
+provider in place, so the conversation UI does not need to remount. The
+swap reaches into an undocumented `ellmer` field (`private$provider`)
+behind a version guard and a `tryCatch()`. A failed swap shows a warning
+instead of silently continuing on the old provider.
+
+## Known limitations
+
+- **One shared table per process.** A second browser tab loading a new
+  dataset overwrites the first tab's data. This is a single-user preview
+  tool, not a multi-tenant app.
+- **No second, read-only DuckDB connection.** DuckDB cannot `ATTACH` the
+  same file twice for a second reader on Windows. An in-process
+  `read_only = TRUE` handle still accepted a `DROP` in testing. SQL safety
+  depends entirely on the `is_read_only_sql()` keyword and literal-stripping
+  check, not on a database-level permission, and every chat-issued query
+  passes through that gate.
+- **Large tables are sampled for modeling.** `fit_supervised()` samples down
+  to 8,000 rows before fitting. The profile falls back to a 200-row preview
+  once a table passes 80,000 rows, so summary statistics on very large
+  tables are approximate.
+- **The provider swap is version-pinned.** `attach_chat_provider()` requires
+  `ellmer` 0.4.2 or later and reaches into a private field. An `ellmer`
+  upgrade that renames that field disables in-place provider switching
+  until the guard is updated.
+
+## Run the app
+
+1. Add at least one provider key (`ANTHROPIC_API_KEY` or `XAI_API_KEY`) to
+   your user `.Renviron` and restart R. See `README.md` for where to get a
+   key.
+2. From the `ellmer-practice` folder, run `source("setup.R")` to install
+   missing packages.
+3. Run `shiny::runApp()`, or open `app.R` and click **Run App**.
+
+`tests/testthat/` covers the profiler, the plot-spec resolver, the recipe
+builders, and the tool schemas. Run it with
+`testthat::test_dir("tests/testthat")` or `devtools::test()`.
